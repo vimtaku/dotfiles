@@ -1,0 +1,6 @@
+[submodule ".vim/bundle/vim-operator-user"]
+	path = .vim/bundle/vim-operator-user
+	url = git://github.com/kana/vim-operator-user.git
+[submodule "vim-operator-user"]
+	path = vim-operator-user
+	url = git://github.com/kana/vim-operator-user.git
