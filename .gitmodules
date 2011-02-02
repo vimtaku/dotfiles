@@ -4,3 +4,9 @@
 [submodule "vim-operator-user"]
 	path = vim-operator-user
 	url = git://github.com/kana/vim-operator-user.git
+[submodule ".vim/bundle/vim-operator-replace"]
+	path = .vim/bundle/vim-operator-replace
+	url = git://github.com/kana/vim-operator-replace.git
+[submodule "test_submodule"]
+	path = test_submodule
+	url = git@github.com:vimtaku/sample3.git
