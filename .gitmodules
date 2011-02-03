@@ -10,3 +10,33 @@
 [submodule "test_submodule"]
 	path = test_submodule
 	url = git@github.com:vimtaku/sample3.git
+[submodule ".vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule ".vim/bundle/vimshell"]
+	path = .vim/bundle/vimshell
+	url = git://github.com/Shougo/vimshell.git
+[submodule ".vim/bundle/unite.vim"]
+	path = .vim/bundle/unite.vim
+	url = git://github.com/Shougo/unite.vim.git
+[submodule ".vim/bundle/vim-ref"]
+	path = .vim/bundle/vim-ref
+	url = git://github.com/thinca/vim-ref.git
+[submodule ".vim/bundle/perldoc-vim"]
+	path = .vim/bundle/perldoc-vim
+	url = git://github.com/mattn/perldoc-vim.git
+[submodule ".vim/bundle/perlomni.vim"]
+	path = .vim/bundle/perlomni.vim
+	url = git://github.com/c9s/perlomni.vim.git
+[submodule ".vim/bundle/vim-textobj-plugins"]
+	path = .vim/bundle/vim-textobj-plugins
+	url = git://github.com/thinca/vim-textobj-plugins.git
+[submodule ".vim/bundle/vim-alignta"]
+	path = .vim/bundle/vim-alignta
+	url = git://github.com/h1mesuke/vim-alignta.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
