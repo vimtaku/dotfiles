@@ -22,23 +22,6 @@ aug END
 
 
 
-" svn コミット時にコミットメッセージに自動でパスを追加する
-function! SvnCommitInfo()
-    let l:svn_branch_url = system("svn info | grep '^URL:'")
-    let l:match_list = matchlist(l:svn_branch_url, '^URL: svn:\/\/jupiter\/\(.*\)\n')
-    let l:branch = l:match_list[1]
-    call append(0, '['.l:branch.'] ')
-    call append(1, '['.l:match_list[1].'] ')
-    delete
-    normal gg$
-endf
-
-augroup SvnCommit
-    :au!
-    au Filetype svn :call SvnCommitInfo()
-aug END
-
-
 " ファイルを前回とじた時の場所を記憶
 if has("autocmd")
     autocmd BufReadPost *
