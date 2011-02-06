@@ -20,14 +20,14 @@ noremap ,uf :Unite -no-quit file<CR>
 noremap ,ub :Unite -no-quit buffer<CR>
 noremap ,um :Unite -no-quit file_mru<CR>
 
+" for unite window height
+let g:unite_winheight=10
+
 
 " for yanktmp
 map <silent> sy :call YanktmpYank()<CR>
 map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
-
-""" no using now...
 " quickrun.vim
-"silent! nmap <unique> ,q <Plug>(quickrun)
-
+silent! nmap <unique> ,r <Plug>(quickrun)
