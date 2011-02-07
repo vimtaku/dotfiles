@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/vim-textobj-comment"]
 	path = .vim/bundle/vim-textobj-comment
 	url = git://github.com/thinca/vim-textobj-comment.git
+[submodule ".vim/bundle/vim-textobj-between"]
+	path = .vim/bundle/vim-textobj-between
+	url = git://github.com/thinca/vim-textobj-between.git
