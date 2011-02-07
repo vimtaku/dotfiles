@@ -1,16 +1,17 @@
 
 function! DataDumper()
-    let resrow1 = 'use Data::Dumper;'
-    let yanked = getreg('""')
-    let currow = getpos(".")[1]
-    let str = 'warn "{XXX DEBUG ['.bufname('').'] L'.currow. '} '. yanked.' is below.";'
-    call append(currow, resrow1)
-    call append(currow+1, str)
-    call append(currow+2, 'warn Dumper '.yanked.';')
-    let pos = getpos(".")
-    let list2 = pos[1:3]
-    let list2[0] = list2[0] + 1
-    call cursor(list2)
+    let l:use_str = 'use Data::Dumper;'
+    let l:yanked = getreg('""')
+    let l:currow = getpos(".")[1]
+    let l:escaped_yanked = escape(escape(escape(l:yanked, '$'), '@'), '%')
+    let l:str = 'warn "{XXX DEBUG ['.bufname('').'] L'.l:currow. '} '. l:escaped_yanked .' is below.";'
+    call append(l:currow, l:use_str)
+    call append(l:currow+1, l:str)
+    call append(l:currow+2, 'warn Dumper '.l:yanked.';')
+    let l:pos = getpos(".")
+    let l:list = l:pos[1:3]
+    let l:list[0] = l:list[0] + 1
+    call cursor(l:list)
 endf
 
 " ファイルタイプによって変わるprintデバッグ
@@ -19,8 +20,6 @@ augroup Dumpers
     au Filetype perl noremap ,z :call DataDumper()<CR>
     au Filetype javascript noremap ,z o<ESC>p_iconsole.debug(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
 aug END
-
-
 
 " ファイルを前回とじた時の場所を記憶
 if has("autocmd")
