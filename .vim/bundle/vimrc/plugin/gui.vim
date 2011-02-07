@@ -1,5 +1,5 @@
 " 色
-"colorscheme slate
+colorscheme slate
 
 " 強化されたタブメニュー(GUI)
 set wildmenu

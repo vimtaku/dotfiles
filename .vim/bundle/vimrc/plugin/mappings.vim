@@ -17,6 +17,9 @@ nnoremap k gk
 noremap <Space> <C-w>
 noremap dw de
 
+noremap <Tab> gt
+noremap <S-Tab> gT
+
 
 "##################################
 " SHORTCUT MAPPINGS
