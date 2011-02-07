@@ -3,10 +3,9 @@ syntax on
 filetype plugin on
 set nocompatible
 
-" tab関係
+" tab関連
 set shiftwidth=4
 set tabstop=4
-" tabをspaceに変換
 set expandtab
 
 " Perl書いているときに#押したら行頭に行っちゃうのを防ぐため
