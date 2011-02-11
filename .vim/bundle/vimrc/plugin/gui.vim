@@ -1,6 +1,3 @@
-" 色
-colorscheme slate
-
 " 強化されたタブメニュー(GUI)
 set wildmenu
 
@@ -16,3 +13,13 @@ set mouse=a
 
 " screen対応
 set ttymouse=xterm2
+
+" カラースキーマ
+if (has('win32'))
+    colorscheme slate
+elseif (has('mac'))
+    colorscheme koehler
+else
+    colorscheme slate
+endif
+
