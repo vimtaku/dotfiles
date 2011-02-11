@@ -31,6 +31,10 @@ set backspace=2
 " change grep to ack
 set grepprg=ack\ -a
 
+" sync unnamed register and *register.
+set clipboard=unnamed
+
+
 "##################################
 " FOR SEARCH
 "##################################
