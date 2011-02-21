@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/vim-textobj-between"]
 	path = .vim/bundle/vim-textobj-between
 	url = git://github.com/thinca/vim-textobj-between.git
+[submodule ".vim/bundle/vim-unite-svn"]
+	path = .vim/bundle/vim-unite-svn
+	url = git://github.com/kmnk/vim-unite-svn.git
