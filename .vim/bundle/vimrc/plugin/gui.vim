@@ -20,6 +20,6 @@ if (has('win32'))
 elseif (has('mac'))
     colorscheme koehler
 else
-    colorscheme koehler
+    colorscheme slate
 endif
 

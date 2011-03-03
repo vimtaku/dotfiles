@@ -76,8 +76,9 @@ if has("syntax")
 endif
 
 
-" renameする(commitしてるとうまくいかないぎわく)
+" renameする
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
+
 
 au BufRead,BufNewFile *.t    set filetype=perl
 au BufRead,BufNewFile *.tmpl set filetype=html
@@ -92,4 +93,12 @@ function! s:JumpMiddle()
     call setpos('.', save_cursor)
 endfun
 nnoremap <silent> M :call <SID>JumpMiddle()<CR>
+
+
+" 存在しないディレクトリ下のファイルを開いている場合にディレクトリの作成を行いつつ保存する
+command! -nargs=0 Fw call s:WriteAfterMakeDir()
+function! s:WriteAfterMakeDir()
+    call mkdir(expand('%:h'), 'p')
+    write
+endfunction
 

@@ -20,6 +20,12 @@ noremap dw de
 noremap <Tab> gt
 noremap <S-Tab> gT
 
+" for mooooooo special
+noremap g<CR> g;
+
+" for mooooooo special save the file.
+noremap :w: :w<CR>
+
 
 "##################################
 " SHORTCUT MAPPINGS
