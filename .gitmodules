@@ -55,6 +55,3 @@
 [submodule ".vim/bundle/vim-unite-svn"]
 	path = .vim/bundle/vim-unite-svn
 	url = git://github.com/kmnk/vim-unite-svn.git
-[submodule ".vim/bundle/yanktmp.vim"]
-	path = .vim/bundle/yanktmp.vim
-	url = git://github.com/vim-scripts/yanktmp.vim.git
