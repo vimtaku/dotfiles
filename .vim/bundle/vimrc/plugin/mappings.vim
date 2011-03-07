@@ -24,8 +24,7 @@ noremap <S-Tab> gT
 noremap g<CR> g;
 
 " for mooooooo special save the file.
-noremap :w: :w<CR>
-
+nnoremap <CR> :<C-u>w<CR>
 
 "##################################
 " SHORTCUT MAPPINGS
