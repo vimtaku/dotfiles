@@ -18,6 +18,7 @@ noremap ,ur :UniteResume<CR>
 noremap ,uw :UniteWithBufferDir -no-quit file<CR>
 noremap ,uf :Unite -no-quit file<CR>
 noremap ,ub :Unite -no-quit buffer<CR>
+noremap ,uB :Unite -no-quit bookmark file<CR>
 noremap ,um :Unite -no-quit file_mru<CR>
 
 " for unite window height
