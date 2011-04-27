@@ -32,3 +32,8 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 
 " quickrun.vim
 silent! nmap <unique> ,r <Plug>(quickrun)
+
+" for alingta
+vnoremap <silent> => :Align=><CR>
+vnoremap <silent> = :Align=<CR>
+vnoremap <silent> == =
