@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/yanktmp.vim"]
 	path = .vim/bundle/yanktmp.vim
 	url = git://github.com/vim-scripts/yanktmp.vim.git
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
