@@ -26,6 +26,14 @@ noremap g<CR> g;
 " for mooooooo special save the file.
 nnoremap <CR> :<C-u>w<CR>
 
+noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
+noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
+noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
+noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
+
+noremap ,n :noh<CR>
+
+
 "##################################
 " SHORTCUT MAPPINGS
 "##################################

@@ -9,9 +9,6 @@ let g:ref_perldoc_complete_head = 1
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 
-" for NERDTree
-noremap ,n :NERDTreeToggle<CR>
-
 " Unite mappings
 noremap ,ue :Unite -no-quit file_rec<CR>
 noremap ,ur :UniteResume<CR>
@@ -37,3 +34,4 @@ silent! nmap <unique> ,r <Plug>(quickrun)
 vnoremap <silent> => :Align=><CR>
 vnoremap <silent> = :Align=<CR>
 vnoremap <silent> == =
+
