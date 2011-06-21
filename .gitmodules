@@ -58,3 +58,12 @@
 [submodule ".vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule ".vim/bundle/vim-textobj-sigil"]
+	path = .vim/bundle/vim-textobj-sigil
+	url = git://github.com/vimtaku/vim-textobj-sigil.git
+[submodule ".vim/bundle/vim-textobj-doublecolon"]
+	path = .vim/bundle/vim-textobj-doublecolon
+	url = git://github.com/vimtaku/vim-textobj-doublecolon.git
