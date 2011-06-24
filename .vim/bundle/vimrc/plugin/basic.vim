@@ -1,4 +1,3 @@
-" おまじない
 syntax on
 filetype plugin on
 set nocompatible
@@ -19,8 +18,6 @@ set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,
 
 " 縦分割をする際、新しいウィンドウを右側に作る
 set splitright
-" 縦分割した後、カーソル下のタグへジャンプ
-nnoremap ,s :vsplit<CR>g]
 
 " gfコマンドもウィンドウ分割して開く
 nnoremap gf :vsplit<CR>gf
@@ -123,5 +120,4 @@ if has('persistent_undo')
   set undoreload=10000 "maximum number lines to save for undo on a buffer reload
   set undofile
 endif
-
 

@@ -39,7 +39,6 @@ noremap ,n :noh<CR>
 "##################################
 
 noremap ,ev :e ~/.vimrc<CR>
-noremap ,e :source ~/.vimrc<CR>:echo 'read vimrc!'<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
 noremap ,v :r! cat -<CR>
 
