@@ -1,0 +1,11 @@
+alias cp='cp -i'
+alias mv='mv -i'
+alias ll='ls -lw'
+alias la='ls -aw'
+alias le='less'
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+alias gst='git status --ignore-submodules'
+alias gd='git diff'
+alias gsubup="git submodule foreach 'git pull origin master'"

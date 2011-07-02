@@ -21,6 +21,7 @@ noremap ,uss :Unite -no-quit svn/status<CR>
 
 " for unite window height
 let g:unite_winheight=10
+let g:unite_enable_start_insert=1
 
 
 " for yanktmp
@@ -89,4 +90,6 @@ endfunction
 
 " vimshell mappings
 nnoremap ,s :VimShell<CR>
+
+
 
