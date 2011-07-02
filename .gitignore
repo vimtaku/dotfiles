@@ -1,3 +1,5 @@
 *.bak
 *.netrwhist
 m_*
+.vim/bundle/*
+.vim/bundle/*/*
