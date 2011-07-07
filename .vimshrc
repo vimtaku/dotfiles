@@ -1,7 +1,7 @@
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -lw'
-alias la='ls -aw'
+alias la='ls -a'
 alias le='less'
 alias u='cd ..'
 alias uu='cd ../..'

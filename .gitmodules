@@ -94,3 +94,7 @@
 	path = .vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
 	ignore = all
+[submodule ".vim/bundle/vim-scouter"]
+	path = .vim/bundle/vim-scouter
+	url = git://github.com/thinca/vim-scouter.git
+	ignore = all

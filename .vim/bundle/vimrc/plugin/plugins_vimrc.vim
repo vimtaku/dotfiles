@@ -91,5 +91,5 @@ endfunction
 " vimshell mappings
 nnoremap ,s :VimShell<CR>
 
-
+command MyScouter :Scouter ~/.vim/bundle/vimrc/plugin/*.vim
 
