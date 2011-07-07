@@ -102,3 +102,29 @@ function! s:WriteAfterMakeDir()
     write
 endfunction
 
+
+"" for prove it automatically.
+let g:auto_prove_it_enable = 0
+
+function! s:toggle_prove_it()
+    if (g:auto_prove_it_enable == 0)
+      let g:auto_prove_it_enable = 1
+    else
+      let g:auto_prove_it_enable = 0
+    endif
+endfunction
+
+command! ToggleProveIt :call s:toggle_prove_it()
+
+function! ProveItWrapper()
+  if (g:auto_prove_it_enable == 1)
+    " fixme
+    :QuickRun -runmode async:vimproc:20 -exec 'perl %s'
+  endif
+endfunction
+
+augroup AutoProveIt
+  au!
+  au BufWritePost *.t,*.pm,*.pl :call ProveItWrapper()
+augroup END
+
