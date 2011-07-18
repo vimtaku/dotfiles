@@ -29,6 +29,8 @@ Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
+Bundle 'git://github.com/msanders/snipmate.vim.git'
+
 
 filetype plugin indent on
 
