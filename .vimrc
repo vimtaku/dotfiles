@@ -1,35 +1,33 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle.git/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-Bundle 'git://github.com/kana/vim-operator-user.git'
-Bundle 'git://github.com/kana/vim-operator-replace.git'
-Bundle 'git://github.com/Shougo/vimshell.git'
-Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/thinca/vim-ref.git'
-Bundle 'git://github.com/mattn/perldoc-vim.git'
-Bundle 'git://github.com/c9s/perlomni.vim.git'
-Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://github.com/ujihisa/quickrun.git'
-Bundle 'git://github.com/thinca/vim-textobj-comment.git'
-Bundle 'git://github.com/thinca/vim-textobj-between.git'
-Bundle 'git://github.com/kmnk/vim-unite-svn.git'
-Bundle 'git://github.com/vim-scripts/yanktmp.vim.git'
-Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/gmark/vundle.git'
+Bundle 'gmarik/vundle.git'
+Bundle 'kana/vim-operator-user.git'
+Bundle 'kana/vim-operator-replace.git'
+Bundle 'Shougo/vimshell.git'
+Bundle 'Shougo/unite.vim.git'
+Bundle 'thinca/vim-ref.git'
+Bundle 'mattn/perldoc-vim.git'
+Bundle 'c9s/perlomni.vim.git'
+Bundle 'h1mesuke/vim-alignta.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'kana/vim-textobj-user.git'
+Bundle 'ujihisa/quickrun.git'
+Bundle 'thinca/vim-textobj-comment.git'
+Bundle 'thinca/vim-textobj-between.git'
+Bundle 'kmnk/vim-unite-svn.git'
+Bundle 'vim-scripts/yanktmp.vim.git'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'Shougo/vimproc.git'
+Bundle 'vimtaku/vim-textobj-sigil.git'
+Bundle 'vimtaku/vim-textobj-doublecolon.git'
+Bundle 'Shougo/neocomplcache.git'
+Bundle 't9md/vim-textmanip.git'
 
 filetype plugin indent on
 
@@ -50,7 +48,10 @@ set expandtab
 set cinkeys-=0#
 set cindent
 
-"visualize to SpecialKeys.
+" when use . command, repeat yank.
+set cpoptions+=y
+
+" visualize to SpecialKeys.
 set list
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,
 
@@ -302,6 +303,19 @@ endfunction
 " vimshell mappings
 nnoremap ,s :VimShell<CR>
 
+
+" 選択したテキストの移動
+vmap <C-j> <Plug>(Textmanip.move_selection_down)
+vmap <C-l> <Plug>(Textmanip.move_selection_right)
+vmap <C-k> <Plug>(Textmanip.move_selection_up)
+vmap <C-h> <Plug>(Textmanip.move_selection_left)
+
+" 行の複製
+vmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
+nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
+
+
+"" utilities.
 
 function! DataDumper()
     let l:use_str = 'use Data::Dumper;'
