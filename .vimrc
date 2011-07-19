@@ -403,13 +403,12 @@ command! ToggleProveIt :call s:toggle_prove_it()
 
 function! ProveItWrapper()
   if (g:auto_prove_it_enable == 1)
-    " fixme
-    :QuickRun -runmode async:vimproc:20 -exec 'perl %s'
+    :QuickRun -runmode async:vimproc:20  -exec 'perl ./script/devel/proveit %s'
   endif
 endfunction
 
 augroup AutoProveIt
   au!
-  au BufWritePost *.t,*.pm,*.pl :call ProveItWrapper()
+  au BufWritePost *.t,*.pm :call ProveItWrapper()
 augroup END
 
