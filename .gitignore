@@ -1,4 +1,6 @@
 *.bak
 *.netrwhist
+*.swp
+*.swo
 m_*
 .vim/bundle/*
