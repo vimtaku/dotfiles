@@ -98,3 +98,6 @@
 	path = .vim/bundle/vim-scouter
 	url = git://github.com/thinca/vim-scouter.git
 	ignore = all
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = git://github.com/gmarik/vundle.git
