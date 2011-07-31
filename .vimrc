@@ -155,18 +155,20 @@ set mouse=a
 
 set ttymouse=xterm2
 
-
 "" color scheme.
 if (has('win32'))
     colorscheme slate
 elseif (has('mac'))
     colorscheme koehler
 else
-    colorscheme slate
+    " 一行だけ~/.vimcolorschemeに書いておくことでcolorschemeとして読み込む
+    let s:file_path = $HOME. '/.vimcolorscheme'
+    if (filereadable(s:file_path))
+        for line in readfile(s:file_path)
+            execute(line)
+        endfor
+    endif
 endif
-
-
-
 
 
 """ mappings.
