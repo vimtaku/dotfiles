@@ -159,18 +159,20 @@ set mouse=a
 
 set ttymouse=xterm2
 
-
 "" color scheme.
 if (has('win32'))
     colorscheme slate
 elseif (has('mac'))
     colorscheme koehler
 else
-    colorscheme slate
+    " 一行だけ~/.vimcolorschemeに書いておくことでcolorschemeとして読み込む
+    let s:file_path = $HOME. '/.vimcolorscheme'
+    if (filereadable(s:file_path))
+        for line in readfile(s:file_path)
+            execute(line)
+        endfor
+    endif
 endif
-
-
-
 
 
 """ mappings.
@@ -407,14 +409,13 @@ command! ToggleProveIt :call s:toggle_prove_it()
 
 function! ProveItWrapper()
   if (g:auto_prove_it_enable == 1)
-    " fixme
-    :QuickRun -runmode async:vimproc:20 -exec 'perl %s'
+    :QuickRun -runmode async:vimproc:20  -exec 'perl ./script/devel/proveit %s'
   endif
 endfunction
 
 augroup AutoProveIt
   au!
-  au BufWritePost *.t,*.pm,*.pl :call ProveItWrapper()
+  au BufWritePost *.t,*.pm :call ProveItWrapper()
 augroup END
 
 
