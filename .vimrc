@@ -229,18 +229,19 @@ nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 
 " Unite mappings
-noremap ,ue :Unite -no-quit file_rec<CR>
-noremap ,ur :UniteResume<CR>
-noremap ,uw :UniteWithBufferDir -no-quit file<CR>
-noremap ,uf :Unite -no-quit file<CR>
-noremap ,ub :Unite -no-quit buffer<CR>
-noremap ,uB :Unite -no-quit bookmark file<CR>
-noremap ,um :Unite -no-quit file_mru<CR>
-noremap ,uss :Unite -no-quit svn/status<CR>
+nnoremap ,ue :Unite -no-quit file_rec<CR>
+nnoremap ,ur :UniteResume<CR>
+nnoremap ,uw :UniteWithBufferDir -no-quit file<CR>
+nnoremap ,ul :Unite -no-quit line<CR>
+nnoremap ,uf :Unite -no-quit file<CR>
+nnoremap ,ut :Unite -no-quit tab<CR>
+nnoremap ,ub :Unite -no-quit buffer<CR>
+nnoremap ,uB :Unite -no-quit bookmark file<CR>
+nnoremap ,um :Unite -no-quit file_mru<CR>
+nnoremap ,uss :Unite -no-quit svn/status<CR>
 
 " for unite window height
 let g:unite_winheight=10
-let g:unite_enable_start_insert=1
 
 
 " for yanktmp
@@ -252,8 +253,8 @@ map <silent> sP :call YanktmpPaste_P()<CR>
 silent! nmap <unique> ,r <Plug>(quickrun)
 
 " for alingta
-vnoremap <silent> => :Align=><CR>
-vnoremap <silent> = :Align=<CR>
+vnoremap <silent> => :Align @1 =><CR>
+vnoremap <silent> = :Align @1 =<CR>
 vnoremap <silent> == =
 
 
