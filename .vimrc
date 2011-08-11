@@ -1,3 +1,4 @@
+
 set nocompatible
 filetype off
 
@@ -322,7 +323,7 @@ vmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
 
 
-"" utilities.
+"" util.
 
 function! DataDumper()
     let l:use_str = 'use Data::Dumper;'
@@ -450,3 +451,9 @@ function! s:GetHighlight(hi)
     return hl
 endfunction
 
+command! Utf8 :e ++enc=utf8<CR>
+command! EucJP :e ++enc=euc-jp<CR>
+command! Cp932 :e ++enc=cp932<CR>
+command! FencUtf8 :set fenc=utf8<CR>
+command! FencEUC :set fenc=euc-jp<CR>
+command! FencCp932 :set fenc=cp932<CR>
