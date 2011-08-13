@@ -31,8 +31,6 @@ Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/tomtom/tlib_vim.git'
-Bundle 'git://github.com/tomtom/tskeleton_vim.git'
 
 
 filetype plugin indent on
