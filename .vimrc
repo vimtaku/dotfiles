@@ -11,6 +11,7 @@ Bundle 'git://github.com/kana/vim-operator-user.git'
 Bundle 'git://github.com/kana/vim-operator-replace.git'
 Bundle 'git://github.com/Shougo/vimshell.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
+Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/thinca/vim-ref.git'
 Bundle 'git://github.com/mattn/perldoc-vim.git'
 Bundle 'git://github.com/c9s/perlomni.vim.git'
@@ -31,6 +32,8 @@ Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
+Bundle 'git://github.com/h1mesuke/unite-outline.git'
+
 
 
 filetype plugin indent on
