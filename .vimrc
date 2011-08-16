@@ -235,10 +235,10 @@ nnoremap ,ur :UniteResume<CR>
 nnoremap ,uw :UniteWithBufferDir -no-quit file<CR>
 nnoremap ,ul :Unite -no-quit line<CR>
 nnoremap ,uf :Unite -no-quit file<CR>
-nnoremap ,ut :Unite -no-quit tab<CR>
-nnoremap ,ub :Unite -no-quit buffer<CR>
+nnoremap ,ub :Unite -no-quit tab buffer<CR>
 nnoremap ,uB :Unite -no-quit bookmark file<CR>
 nnoremap ,um :Unite -no-quit file_mru<CR>
+nnoremap ,uo :Unite -no-quit outline<CR>
 nnoremap ,uss :Unite -no-quit svn/status<CR>
 
 " for unite window height
