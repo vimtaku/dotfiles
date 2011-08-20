@@ -231,16 +231,17 @@ nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 
 " Unite mappings
-nnoremap ,ue :Unite -no-quit file_rec<CR>
+nnoremap ,ue :Unite file_rec<CR>
 nnoremap ,ur :UniteResume<CR>
-nnoremap ,uw :UniteWithBufferDir -no-quit file<CR>
-nnoremap ,ul :Unite -no-quit line<CR>
-nnoremap ,uf :Unite -no-quit file<CR>
-nnoremap ,ub :Unite -no-quit tab buffer<CR>
-nnoremap ,uB :Unite -no-quit bookmark file<CR>
-nnoremap ,um :Unite -no-quit file_mru<CR>
-nnoremap ,uo :Unite -no-quit outline<CR>
-nnoremap ,uss :Unite -no-quit svn/status<CR>
+nnoremap ,uw :UniteWithBufferDir file<CR>
+nnoremap ,uc :UniteWithCurrentDir file<CR>
+nnoremap ,ul :Unite line<CR>
+nnoremap ,uf :Unite file<CR>
+nnoremap ,ub :Unite tab buffer<CR>
+nnoremap ,uB :Unite bookmark file<CR>
+nnoremap ,um :Unite file_mru<CR>
+nnoremap ,uo :Unite outline<CR>
+nnoremap ,uss :Unite svn/status<CR>
 
 " for unite window height
 let g:unite_winheight=10
@@ -378,7 +379,7 @@ function! JISX0208SpaceHilight()
 endf
 "syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
 if has("syntax")
-        augroup invisible
+    augroup invisible
         autocmd! invisible
         autocmd BufNew,BufRead * call JISX0208SpaceHilight()
     augroup END
