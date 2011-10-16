@@ -33,6 +33,8 @@ Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/h1mesuke/unite-outline.git'
+Bundle 'git://github.com/motemen/hatena-vim'
+Bundle 'git://gist.github.com/982781.git'
 
 
 
@@ -200,6 +202,8 @@ noremap <Space> <C-w>
 " move tab focus
 noremap <Tab> gt
 noremap <S-Tab> gT
+noremap <C-p> gt
+noremap <C-n> gT
 
 " for masui special.
 noremap g<CR> g;
@@ -325,6 +329,9 @@ vmap <C-h> <Plug>(Textmanip.move_selection_left)
 vmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
 
+" for hatena-vim
+let g:hatena_user = 'vimtaku'
+
 
 "" util.
 
@@ -347,6 +354,7 @@ augroup Dumpers
     :au!
     au Filetype perl noremap ,z :call DataDumper()<CR>
     au Filetype javascript noremap ,z o<ESC>p_iconsole.debug(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
+    au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
 aug END
 
 if has("autocmd")
@@ -460,3 +468,4 @@ command! Cp932 :e ++enc=cp932<CR>
 command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
+
