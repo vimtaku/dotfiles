@@ -468,3 +468,20 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
+
+"" Qfix howm
+let QFixHowm_Key      = 'g'
+let howm_dir          = $HOME . '/Dropbox/howm'
+let QFixHowm_RootDir  = $HOME . '/Dropbox/howm'
+let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let howm_fileencoding = 'utf8'
+let howm_fileformat   = 'unix'
+let g:QFixHowm_TitleListCache = 0
+
+"howmディレクトリの切替
+nnoremap <silent> g,hh :echo howm_dir<CR>
+nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
+nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
+nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
+
+
