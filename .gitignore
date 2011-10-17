@@ -4,3 +4,4 @@
 *.swo
 m_*
 .vim/bundle/*
+.gitconfig

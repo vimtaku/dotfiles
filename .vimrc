@@ -26,17 +26,16 @@ Bundle 'git://github.com/kmnk/vim-unite-svn.git'
 Bundle 'git://github.com/vim-scripts/yanktmp.vim.git'
 Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/vimtaku/dotfiles.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/h1mesuke/unite-outline.git'
-Bundle 'git://github.com/motemen/hatena-vim.git'
 Bundle 'git://github.com/tyru/open-browser.vim.git'
 Bundle 'git://github.com/vim-scripts/vimwiki.git'
-
+Bundle 'git://github.com/motemen/hatena-vim'
+Bundle 'git://gist.github.com/982781.git'
 
 
 filetype plugin indent on
@@ -200,10 +199,10 @@ nnoremap k gk
 noremap <Space> <C-w>
 
 " move tab focus
-noremap <C-p> gt
-noremap <C-n> gT
-noremap <tab> gt
-noremap <S-tab> gT
+nnoremap <C-p> gt
+nnoremap <C-n> gT
+nnoremap <tab> gt
+nnoremap <S-tab> gT
 
 " for masui special.
 noremap g<CR> g;
@@ -358,8 +357,6 @@ augroup Vimwiki
 augroup END
 
 
-
-
 "" util.
 
 function! DataDumper()
@@ -381,6 +378,7 @@ augroup Dumpers
     :au!
     au Filetype perl noremap ,z :call DataDumper()<CR>
     au Filetype javascript noremap ,z o<ESC>p_iconsole.debug(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
+    au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
 aug END
 
 if has("autocmd")
@@ -496,4 +494,18 @@ command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
 
+"" Qfix howm
+let QFixHowm_Key      = 'g'
+let howm_dir          = $HOME . '/Dropbox/howm'
+let QFixHowm_RootDir  = $HOME . '/Dropbox/howm'
+let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let howm_fileencoding = 'utf8'
+let howm_fileformat   = 'unix'
+let g:QFixHowm_TitleListCache = 0
+
+"howmディレクトリの切替
+nnoremap <silent> g,hh :echo howm_dir<CR>
+nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
+nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
+nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
 
