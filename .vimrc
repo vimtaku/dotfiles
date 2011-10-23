@@ -32,9 +32,10 @@ Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/h1mesuke/unite-outline.git'
+Bundle 'git://github.com/tyru/open-browser.vim.git'
+Bundle 'git://github.com/vim-scripts/vimwiki.git'
 Bundle 'git://github.com/motemen/hatena-vim'
 Bundle 'git://gist.github.com/982781.git'
-
 
 
 filetype plugin indent on
@@ -177,7 +178,6 @@ else
     endif
 endif
 
-
 """ mappings.
 
 " open new window vertical split when use gf.
@@ -199,10 +199,10 @@ nnoremap k gk
 noremap <Space> <C-w>
 
 " move tab focus
-noremap <Tab> gt
-noremap <S-Tab> gT
-noremap <C-p> gt
-noremap <C-n> gT
+nnoremap <C-p> gt
+nnoremap <C-n> gT
+nnoremap <tab> gt
+nnoremap <S-tab> gT
 
 " for masui special.
 noremap g<CR> g;
@@ -218,6 +218,9 @@ noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
 noremap ,v :r! cat -<CR>
 
+nnoremap : q:a
+nnoremap / q/a
+nnoremap <silent> <BS> :<C-u>noh<CR>
 
 
 """ for plugin mappings.
@@ -318,6 +321,7 @@ endfunction
 nnoremap ,s :VimShell<CR>
 
 
+
 " 選択したテキストの移動
 vmap <C-j> <Plug>(Textmanip.move_selection_down)
 vmap <C-l> <Plug>(Textmanip.move_selection_right)
@@ -330,6 +334,27 @@ nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
 
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
+
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+" for vimwiki
+map ,wf <Plug>VimwikiFollowLink
+map ,w <Plug>VimwikiIndex
+function! Space_Mapping_VimwikiToggleListItem()
+    if (&filetype == 'vimwiki')
+        map <Space> <Plug>VimwikiToggleListItem<Down>
+    else
+        noremap <Space> <C-w>
+    endif
+endfunction
+
+augroup Vimwiki
+    autocmd!
+    autocmd Filetype,BufEnter vimwiki nnoremap <CR> :<C-u>w<CR>
+    autocmd Filetype,BufEnter vimwiki :call Space_Mapping_VimwikiToggleListItem()
+augroup END
 
 
 "" util.
@@ -484,5 +509,4 @@ nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
 nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
 nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
 nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
-
 
