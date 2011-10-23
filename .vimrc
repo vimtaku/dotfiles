@@ -480,6 +480,7 @@ let g:QFixHowm_TitleListCache = 0
 
 "howmディレクトリの切替
 nnoremap <silent> g,hh :echo howm_dir<CR>
+nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
 nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
 nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
 nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
