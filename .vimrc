@@ -36,7 +36,9 @@ Bundle 'git://github.com/tyru/open-browser.vim.git'
 Bundle 'git://github.com/vim-scripts/vimwiki.git'
 Bundle 'git://github.com/motemen/hatena-vim'
 Bundle 'git://gist.github.com/982781.git'
-
+Bundle 'git://github.com/adie/BlockDiff.git'
+Bundle 'git://github.com/thinca/vim-poslist'
+Bundle 'git://github.com/thinca/vim-visualstar'
 
 filetype plugin indent on
 
@@ -493,7 +495,6 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
-
 "" Qfix howm
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
@@ -509,4 +510,19 @@ nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
 nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
 nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
 nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
+
+
+map <C-o> <Plug>(poslist-prev-pos)
+map <C-i> <Plug>(poslist-next-pos)
+
+"" reselect paste resion
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" 行末移動
+set whichwrap+=h,l
+
+nnoremap <C-h> :noh<CR>
+
+" new buffer
+command! Tempfile :e `=tempname()`
 
