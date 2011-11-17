@@ -1,11 +1,12 @@
-
+" vim:set fen fdm=marker:
+" Basic {{{1
 set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
+" let Vundle manage Vundle {{{2
 Bundle 'git://github.com/gmarik/vundle.git'
 Bundle 'git://github.com/kana/vim-operator-user.git'
 Bundle 'git://github.com/kana/vim-operator-replace.git'
@@ -17,6 +18,7 @@ Bundle 'git://github.com/mattn/perldoc-vim.git'
 Bundle 'git://github.com/c9s/perlomni.vim.git'
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/tpope/vim-repeat.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/kana/vim-textobj-user.git'
 Bundle 'git://github.com/ujihisa/quickrun.git'
@@ -39,15 +41,22 @@ Bundle 'git://gist.github.com/982781.git'
 Bundle 'git://github.com/adie/BlockDiff.git'
 Bundle 'git://github.com/thinca/vim-poslist'
 Bundle 'git://github.com/thinca/vim-visualstar'
+Bundle 'git://github.com/nathanaelkane/vim-indent-guides'
+Bundle 'git://github.com/tpope/vim-speeddating'
+Bundle 'git://github.com/koron/chalice'
+Bundle 'git://github.com/ynkdir/vim-funlib'
+Bundle 'git://github.com/kana/vim-textobj-fold'
+Bundle 'git://github.com/kana/vim-textobj-indent'
+Bundle 'git://github.com/kana/vim-textobj-lastpat'
+"}}}2
+
+let skk_large_jisyo = "/usr/share/skk/SKK-JISYO.L"
 
 filetype plugin indent on
 
 call pathogen#runtime_append_all_bundles()
 
-let g:neocomplcache_enable_at_startup = 1
-
-
-"" basic config.
+" basic config. {{{2
 syntax on
 set nocompatible
 
@@ -180,11 +189,12 @@ else
     endif
 endif
 
-""" mappings.
+" end of basic conf. }}}2
 
+
+" mappings. {{{2
 " open new window vertical split when use gf.
 nnoremap gf :vsplit<CR>gf
-
 
 inoremap <C-j> <ESC>
 inoremap <C-l> <C-x><C-l>
@@ -197,7 +207,6 @@ noremap <C-j> <C-d>
 nnoremap j gj
 nnoremap k gk
 
-"noremap dw de
 noremap <Space> <C-w>
 
 " move tab focus
@@ -215,7 +224,6 @@ noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
 noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
 noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
 
-
 noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
 noremap ,v :r! cat -<CR>
@@ -224,9 +232,17 @@ nnoremap : q:a
 nnoremap / q/a
 nnoremap <silent> <BS> :<C-u>noh<CR>
 
+" reselect paste resion
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+" paste yanked string vertically
+vnoremap <C-p> I<C-r>"<ESC><ESC>
 
-""" for plugin mappings.
+nnoremap <C-h> :noh<CR>
 
+"}}}2
+
+
+""" for plugin mappings.{{{2
 
 " for operator replace
 map R <Plug>(operator-replace)
@@ -254,6 +270,8 @@ nnoremap ,uss :Unite svn/status<CR>
 " for unite window height
 let g:unite_winheight=10
 
+" for neocom
+let g:neocomplcache_enable_at_startup = 1
 
 " for yanktmp
 map <silent> sy :call YanktmpYank()<CR>
@@ -323,17 +341,6 @@ endfunction
 nnoremap ,s :VimShell<CR>
 
 
-
-" 選択したテキストの移動
-vmap <C-j> <Plug>(Textmanip.move_selection_down)
-vmap <C-l> <Plug>(Textmanip.move_selection_right)
-vmap <C-k> <Plug>(Textmanip.move_selection_up)
-vmap <C-h> <Plug>(Textmanip.move_selection_left)
-
-" 行の複製
-vmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
-nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
-
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
 
@@ -358,9 +365,7 @@ augroup Vimwiki
     autocmd Filetype,BufEnter vimwiki :call Space_Mapping_VimwikiToggleListItem()
 augroup END
 
-
 "" util.
-
 function! DataDumper()
     let l:use_str = 'use Data::Dumper;'
     let l:yanked = getreg('""')
@@ -511,17 +516,8 @@ nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
 nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
 nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
 
-
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
-
-"" reselect paste resion
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" 行末移動
-set whichwrap+=h,l
-
-nnoremap <C-h> :noh<CR>
 
 " new buffer
 command! Tempfile :e `=tempname()`
@@ -529,4 +525,50 @@ command! Tempfile :e `=tempname()`
 " read matchit
 runtime macros/matchit.vim
 let b:match_words = &matchpairs . ',<TMPL_IF:</TMPL_IF>,<TMPL_LOOP:</TMPL_LOOP>'
+
+" gui indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg='0*'
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg='3'
+
+highlight Normal ctermfg=White
+
+" url encode by alice.vim
+function! s:URLEncode()
+    let l:line = getline('.')
+    let l:encoded = AL_urlencode(l:line)
+    call setline('.', l:encoded)
+endfunction
+
+function! s:URLDecode()
+    let l:line = getline('.')
+    let l:decoded = AL_urldecode(l:line)
+    call setline('.', l:decoded)
+endfunction
+command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
+command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
+
+
+" Randome, MD5, Sha1, Sha256 functions
+function! Random(a, b)
+    return random#randint(a:a, a:b)
+endfunction
+
+function! MD5(data)
+    return hashlib#md5(a:data)
+endfunction
+
+function! Sha1(data)
+    return hashlib#sha1(a:data)
+endfunction
+
+function! Sha256(data)
+    return hashlib#sha256(a:data)
+endfunction
+
+"}}}2 endof plugin mappings and so on.
+
 
