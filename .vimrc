@@ -519,7 +519,7 @@ map <C-i> <Plug>(poslist-next-pos)
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " 行末移動
-set whichwrap+=h,l
+"set whichwrap+=h,l
 
 nnoremap <C-h> :noh<CR>
 
@@ -530,3 +530,5 @@ command! Tempfile :e `=tempname()`
 runtime macros/matchit.vim
 let b:match_words = &matchpairs . ',<TMPL_IF:</TMPL_IF>,<TMPL_LOOP:</TMPL_LOOP>'
 
+"" set tab color
+hi TabLineSel ctermbg=DarkMagenta
