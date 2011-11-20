@@ -51,8 +51,12 @@ Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
 Bundle 'git://github.com/ynkdir/vim-funlib'
 Bundle 'git://github.com/choplin/unite-vim_hacks'
-"}}}2
+Bundle 'git://github.com/ujihisa/unite-colorscheme'
+Bundle 'git://github.com/ujihisa/unite-font'
+Bundle 't9md/vim-phrase'
 
+
+"}}}2
 
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
@@ -92,6 +96,9 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+
+"" relativenumber
+set relativenumber
 
 
 "" encodings.
@@ -192,7 +199,6 @@ endif
 
 " end of basic conf. }}}2
 
-
 " mappings. {{{2
 
 " open new window vertical split when use gf.
@@ -221,10 +227,11 @@ nnoremap <S-tab> gT
 noremap g<CR> g;
 nnoremap <CR> :<C-u>w<CR>
 
-noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
+
+"noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
+"noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
+"noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
+"noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
 
 noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
@@ -248,6 +255,8 @@ nnoremap <C-h> :noh<CR>
 
 " for operator replace
 map R <Plug>(operator-replace)
+
+
 
 " ref.vim
 let g:ref_perldoc_complete_head = 1
@@ -294,7 +303,7 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
 
-if has('win32') || has('win64') 
+if has('win32') || has('win64')
   " Display user name on Windows.
   let g:vimshell_prompt = $USERNAME."% "
 else
@@ -575,4 +584,6 @@ function! Sha256(data)
 endfunction
 
 "}}}2 endof plugin mappings and so on.
+
+hi LineNr term=underline ctermfg=White ctermbg=Magenta
 
