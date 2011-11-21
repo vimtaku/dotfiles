@@ -265,18 +265,24 @@ let g:ref_perldoc_complete_head = 1
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 
+" unite prefix key
+nnoremap [unite] <Nop>
+
+nmap ,u [unite]
+
 " Unite mappings
-nnoremap ,ue :Unite file_rec<CR>
-nnoremap ,ur :UniteResume<CR>
-nnoremap ,uw :UniteWithBufferDir file<CR>
-nnoremap ,uc :UniteWithCurrentDir file<CR>
-nnoremap ,ul :Unite line<CR>
-nnoremap ,uf :Unite file<CR>
-nnoremap ,ub :Unite tab buffer<CR>
-nnoremap ,uB :Unite bookmark file<CR>
-nnoremap ,um :Unite file_mru<CR>
-nnoremap ,uo :Unite outline<CR>
-nnoremap ,uss :Unite svn/status<CR>
+nnoremap [unite]e  :<C-u>Unite file_rec<CR>
+nnoremap [unite]r  :<C-u>UniteResume<CR>
+nnoremap [unite]w  :<C-u>UniteWithBufferDir file<CR>
+nnoremap [unite]c  :<C-u>UniteWithCurrentDir file<CR>
+nnoremap [unite]l  :<C-u>Unite line<CR>
+nnoremap [unite]f  :<C-u>Unite file<CR>
+nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
+nnoremap [unite]B  :<C-u>Unite bookmark file<CR>
+nnoremap [unite]m  :<C-u>Unite file_mru<CR>
+nnoremap [unite]o  :<C-u>Unite outline<CR>
+nnoremap [unite]ss :<C-u>Unite svn/status<CR>
+nnoremap [unite]vh :<C-u>Unite vim_hacks<CR>
 
 " for unite window height
 let g:unite_winheight=10
