@@ -49,12 +49,13 @@ Bundle 'git://github.com/vim-scripts/vimwiki.git'
 Bundle 'git://github.com/vim-scripts/yanktmp.vim.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
 Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
+Bundle 'git://github.com/vimtaku/vim-mlh.git'
 Bundle 'git://github.com/ynkdir/vim-funlib'
 Bundle 'git://github.com/choplin/unite-vim_hacks'
 Bundle 'git://github.com/ujihisa/unite-colorscheme'
 Bundle 'git://github.com/ujihisa/unite-font'
 Bundle 't9md/vim-phrase'
-
+Bundle 'ujihisa/ref-hoogle.git'
 
 "}}}2
 
