@@ -56,6 +56,7 @@ Bundle 'git://github.com/ujihisa/unite-colorscheme'
 Bundle 'git://github.com/ujihisa/unite-font'
 Bundle 't9md/vim-phrase'
 Bundle 'ujihisa/ref-hoogle.git'
+Bundle 'tomtom/tcomment_vim.git'
 
 "}}}2
 
@@ -594,3 +595,7 @@ endfunction
 
 hi LineNr term=underline ctermfg=White ctermbg=Magenta
 
+
+
+let g:tcommentMapLeaderOp1='go'
+let g:tcommentMapLeaderOp2='gO'
