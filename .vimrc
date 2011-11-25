@@ -54,8 +54,9 @@ Bundle 'ynkdir/vim-funlib'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'ujihisa/unite-font'
+Bundle 'ujihisa/ref-hoogle.git'
 Bundle 't9md/vim-phrase'
-
+Bundle 'tomtom/tcomment_vim.git'
 
 "}}}2
 
@@ -592,3 +593,7 @@ endfunction
 
 hi LineNr term=underline ctermfg=White ctermbg=Magenta
 
+
+
+let g:tcommentMapLeaderOp1='go'
+let g:tcommentMapLeaderOp2='gO'
