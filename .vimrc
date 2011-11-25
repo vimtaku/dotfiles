@@ -8,51 +8,52 @@ call vundle#rc()
 
 " let Vundle manage Vundle {{{2
 Bundle 'git://gist.github.com/982781.git'
-Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/Shougo/vimfiler.git'
-Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/Shougo/vimshell.git'
-Bundle 'git://github.com/adie/BlockDiff.git'
-Bundle 'git://github.com/c9s/perlomni.vim.git'
-Bundle 'git://github.com/gmarik/vundle.git'
-Bundle 'git://github.com/h1mesuke/unite-outline.git'
-Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/kana/vim-operator-replace.git'
-Bundle 'git://github.com/kana/vim-operator-user.git'
-Bundle 'git://github.com/kana/vim-textobj-fold'
-Bundle 'git://github.com/kana/vim-textobj-indent'
-Bundle 'git://github.com/kana/vim-textobj-lastpat'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://github.com/kmnk/vim-unite-svn.git'
-Bundle 'git://github.com/koron/chalice'
-Bundle 'git://github.com/mattn/perldoc-vim.git'
-Bundle 'git://github.com/mattn/webapi-vim'
-Bundle 'git://github.com/motemen/hatena-vim'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/nathanaelkane/vim-indent-guides'
-Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/thinca/vim-poslist'
-Bundle 'git://github.com/thinca/vim-ref.git'
-Bundle 'git://github.com/thinca/vim-textobj-between.git'
-Bundle 'git://github.com/thinca/vim-textobj-comment.git'
-Bundle 'git://github.com/thinca/vim-visualstar'
-Bundle 'git://github.com/thinca/vim-openbuf'
-Bundle 'git://github.com/tpope/vim-repeat.git'
-Bundle 'git://github.com/tpope/vim-speeddating'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/tyru/open-browser.vim.git'
-Bundle 'git://github.com/ujihisa/quickrun.git'
-Bundle 'git://github.com/vim-scripts/vimwiki.git'
-Bundle 'git://github.com/vim-scripts/yanktmp.vim.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
-Bundle 'git://github.com/ynkdir/vim-funlib'
-Bundle 'git://github.com/choplin/unite-vim_hacks'
-Bundle 'git://github.com/ujihisa/unite-colorscheme'
-Bundle 'git://github.com/ujihisa/unite-font'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'Shougo/neocomplcache.git'
+Bundle 'Shougo/unite.vim.git'
+Bundle 'Shougo/vimfiler.git'
+Bundle 'Shougo/vimproc.git'
+Bundle 'Shougo/vimshell.git'
+Bundle 'adie/BlockDiff.git'
+Bundle 'c9s/perlomni.vim.git'
+Bundle 'gmarik/vundle.git'
+Bundle 'h1mesuke/unite-outline.git'
+Bundle 'h1mesuke/vim-alignta.git'
+Bundle 'kana/vim-operator-replace.git'
+Bundle 'kana/vim-operator-user.git'
+Bundle 'kana/vim-textobj-fold'
+Bundle 'kana/vim-textobj-indent'
+Bundle 'kana/vim-textobj-lastpat'
+Bundle 'kana/vim-textobj-user.git'
+Bundle 'kmnk/vim-unite-svn.git'
+Bundle 'koron/chalice'
+Bundle 'mattn/perldoc-vim.git'
+Bundle 'mattn/webapi-vim'
+Bundle 'motemen/hatena-vim'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 't9md/vim-textmanip.git'
+Bundle 'thinca/vim-poslist'
+Bundle 'thinca/vim-ref.git'
+Bundle 'thinca/vim-textobj-between.git'
+Bundle 'thinca/vim-textobj-comment.git'
+Bundle 'thinca/vim-visualstar'
+Bundle 'thinca/vim-openbuf'
+Bundle 'tpope/vim-repeat.git'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround.git'
+Bundle 'tyru/open-browser.vim.git'
+Bundle 'ujihisa/quickrun.git'
+Bundle 'vim-scripts/vimwiki.git'
+Bundle 'vim-scripts/yanktmp.vim.git'
+Bundle 'vimtaku/vim-textobj-doublecolon.git'
+Bundle 'vimtaku/vim-textobj-sigil.git'
+Bundle 'vimtaku/vim-mlh.git'
+Bundle 'ynkdir/vim-funlib'
+Bundle 'choplin/unite-vim_hacks'
+Bundle 'ujihisa/unite-colorscheme'
+Bundle 'ujihisa/unite-font'
 Bundle 't9md/vim-phrase'
 
 
@@ -96,9 +97,6 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-
-"" relativenumber
-set relativenumber
 
 
 "" encodings.
@@ -286,6 +284,7 @@ nnoremap [unite]vh :<C-u>Unite vim_hacks<CR>
 
 " for unite window height
 let g:unite_winheight=10
+let g:unite_source_history_yank_enable=1
 
 " for neocom
 let g:neocomplcache_enable_at_startup = 1
@@ -548,8 +547,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg='4'
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg='4'
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=4
 
 highlight Normal ctermfg=White
 
