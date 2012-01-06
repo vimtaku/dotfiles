@@ -58,8 +58,11 @@ Bundle 'ujihisa/ref-hoogle.git'
 Bundle 't9md/vim-phrase'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'vim-scripts/JavaScript-Indent.git'
+Bundle 'mattn/learn-vimscript.git'
+Bundle 'kana/vim-submode.git'
+Bundle 'saihoooooooo/vim-textobj-space.git'
 
-"}}}2
+
 
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
@@ -200,6 +203,8 @@ if has('gui_running')
 endif
 
 
+set isfname-=:
+
 "" color scheme.
 if (has('win32'))
     colorscheme slate
@@ -223,6 +228,8 @@ endif
 nnoremap gf :vsplit<CR>gf
 
 inoremap <C-j> <ESC>
+
+
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
 cnoremap <C-y> <C-w>
@@ -608,11 +615,30 @@ function! Sha256(data)
     return hashlib#sha256(a:data)
 endfunction
 
+
+" textobj-space
+let g:textobj_space_no_default_key_mappings = 1
+omap iS <Plug>(textobj-space)
+omap aS <Plug>(textobj-space)
+vmap iS <Plug>(textobj-space)
+vmap aS <Plug>(textobj-space)
+
 "}}}2 endof plugin mappings and so on.
 
 hi LineNr term=underline ctermfg=White ctermbg=Magenta
 
 
-
 let g:tcommentMapLeaderOp1='go'
 let g:tcommentMapLeaderOp2='gO'
+
+
+function! OperatorYankClipboard(motion_wiseness)
+  let visual_commnad =
+  \ operator#user#visual_command_from_wise_name(a:motion_wiseness)
+  execute 'normal!' '`['.visual_commnad.'`]"+y'
+endfunction
+
+call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
+map gy  <Plug>(operator-yank-clipboard)
+
+
