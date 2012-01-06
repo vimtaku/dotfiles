@@ -57,6 +57,7 @@ Bundle 'ujihisa/unite-font'
 Bundle 'ujihisa/ref-hoogle.git'
 Bundle 't9md/vim-phrase'
 Bundle 'tomtom/tcomment_vim.git'
+Bundle 'vim-scripts/JavaScript-Indent.git'
 
 "}}}2
 
@@ -177,9 +178,27 @@ set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %
 
 set scrolloff=10
 
-set mouse=a
 
-set ttymouse=xterm2
+" Enable mouse support.
+set mouse=a
+" For screen.
+if &term =~ "^screen"
+    augroup MyAutoCmd
+        autocmd!
+        autocmd VimLeave * :set mouse=
+     augroup END
+    " screenでマウスを使用するとフリーズするのでその対策
+    set ttymouse=xterm2
+endif
+if has('gui_running')
+    " Show popup menu if right click.
+    set mousemodel=popup
+    " Don't focus the window when the mouse pointer is moved.
+    set nomousefocus
+    " Hide mouse pointer on insert mode.
+    set mousehide
+endif
+
 
 "" color scheme.
 if (has('win32'))
@@ -272,8 +291,8 @@ nmap ,u [unite]
 " Unite mappings
 nnoremap [unite]e  :<C-u>Unite file_rec<CR>
 nnoremap [unite]r  :<C-u>UniteResume<CR>
-nnoremap [unite]w  :<C-u>UniteWithBufferDir file<CR>
-nnoremap [unite]c  :<C-u>UniteWithCurrentDir file<CR>
+nnoremap [unite]w  :<C-u>UniteWithBufferDir file file_rec<CR>
+nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file_rec<CR>
 nnoremap [unite]l  :<C-u>Unite line<CR>
 nnoremap [unite]f  :<C-u>Unite file<CR>
 nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
