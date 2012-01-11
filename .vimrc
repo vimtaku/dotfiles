@@ -631,7 +631,6 @@ hi LineNr term=underline ctermfg=White ctermbg=Magenta
 let g:tcommentMapLeaderOp1='go'
 let g:tcommentMapLeaderOp2='gO'
 
-
 function! OperatorYankClipboard(motion_wiseness)
   let visual_commnad =
   \ operator#user#visual_command_from_wise_name(a:motion_wiseness)
