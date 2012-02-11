@@ -60,6 +60,9 @@ Bundle 'tomtom/tcomment_vim.git'
 Bundle 'mattn/learn-vimscript.git'
 Bundle 'kana/vim-submode.git'
 Bundle 'saihoooooooo/vim-textobj-space.git'
+Bundle 'h1mesuke/ref-dicts-en.git'
+Bundle 'mojako/ref-alc.vim.git'
+Bundle 'eagletmt/unite-haddock.git'
 
 
 
@@ -623,4 +626,18 @@ endfunction
 call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
 map gy  <Plug>(operator-yank-clipboard)
 
+
+
+function! s:JavascriptLambda()
+    setlocal conceallevel=2
+    syntax keyword javaScriptLambda function conceal cchar=\
+    highlight clear Conceal
+    highlight link Conceal Identifier
+    highlight link javaScriptLambda Identifier
+endf
+
+augroup JavascriptLambda
+  au!
+  au BufRead,BufNewFile *.js :call s:JavascriptLambda()
+augroup END
 
