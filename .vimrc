@@ -50,6 +50,7 @@ Bundle 'vim-scripts/yanktmp.vim.git'
 Bundle 'vimtaku/vim-textobj-doublecolon.git'
 Bundle 'vimtaku/vim-textobj-sigil.git'
 Bundle 'vimtaku/vim-mlh.git'
+Bundle 'vimtaku/textobj-wiw.git'
 Bundle 'ynkdir/vim-funlib'
 Bundle 'choplin/unite-vim_hacks'
 Bundle 'ujihisa/unite-colorscheme'
@@ -60,8 +61,7 @@ Bundle 'tomtom/tcomment_vim.git'
 Bundle 'vim-scripts/JavaScript-Indent.git'
 Bundle 'mattn/learn-vimscript.git'
 Bundle 'kana/vim-submode.git'
-Bundle 'saihoooooooo/vim-textobj-space.git'
-
+Bundle 'tpope/vim-fugitive.git'
 
 
 filetype plugin indent on
@@ -103,6 +103,9 @@ set smartcase
 set hlsearch
 set incsearch
 
+" create swp data to only tmp directory
+set directory&
+set directory-=.
 
 "" encodings.
 if &encoding !=# 'utf-8'
@@ -177,10 +180,9 @@ set wildmenu
 
 " status line.
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %l/%L
+set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{fugitive#statusline()}%=%4v\ %l/%L
 
 set scrolloff=10
-
 
 " Enable mouse support.
 set mouse=a
@@ -229,7 +231,6 @@ nnoremap gf :vsplit<CR>gf
 
 inoremap <C-j> <ESC>
 
-
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
 cnoremap <C-y> <C-w>
@@ -252,11 +253,8 @@ nnoremap <S-tab> gT
 noremap g<CR> g;
 nnoremap <CR> :<C-u>w<CR>
 
-
-"noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
+nnoremap q :q<CR>
+nnoremap Q q
 
 noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
@@ -280,7 +278,6 @@ nnoremap <C-h> :noh<CR>
 
 " for operator replace
 map R <Plug>(operator-replace)
-
 
 
 " ref.vim
@@ -543,6 +540,9 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
+command! DeleteAlert :g/alert(/d
+command! DeleteConsole :g/console.\(log\|debug\)/d
+
 "" Qfix howm
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
@@ -552,15 +552,13 @@ let howm_fileencoding = 'utf8'
 let howm_fileformat   = 'unix'
 let g:QFixHowm_TitleListCache = 0
 
+nmap g, [howm]
 "howmディレクトリの切替
-nnoremap <silent> g,hh :echo howm_dir<CR>
-nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
-nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
-nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
-nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
-
-map <C-o> <Plug>(poslist-prev-pos)
-map <C-i> <Plug>(poslist-next-pos)
+nnoremap <silent> [howm]hh :echo howm_dir<CR>
+nnoremap <silent> [howm]ha :call HowmChEnv('', 'time', '=')<CR>
+nnoremap <silent> [howm]hm :call HowmChEnv('main', 'time', '=')<CR>
+nnoremap <silent> [howm]hw :call HowmChEnv('work', 'time', '=')<CR>
+nnoremap <silent> [howm]hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
 
 " new buffer
 command! Tempfile :e `=tempname()`
@@ -618,10 +616,7 @@ endfunction
 
 " textobj-space
 let g:textobj_space_no_default_key_mappings = 1
-omap iS <Plug>(textobj-space)
-omap aS <Plug>(textobj-space)
-vmap iS <Plug>(textobj-space)
-vmap aS <Plug>(textobj-space)
+
 
 "}}}2 endof plugin mappings and so on.
 
@@ -640,4 +635,18 @@ endfunction
 call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
 map gy  <Plug>(operator-yank-clipboard)
 
+
+
+" vim --cmd "profile start result.txt" --cmd "profile file */plugin/*.vim" -c quit
+function! s:InspectVimStartup()
+    let s:list = []
+    global/^SCRIPT/
+    \ call add(s:list, printf("%s\t%s",
+    \                         matchstr(getline(line('.')+2), '\d\+\.\d\+'),
+    \                         matchstr(getline('.'), 'SCRIPT\s*\zs.*$')))
+    new
+    put =reverse(sort(s:list))
+    1 delete _
+endfunction
+command! -nargs=0 -range InspectVimStartup :call <SID>InspectVimStartup()
 
