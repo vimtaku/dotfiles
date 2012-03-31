@@ -3,72 +3,92 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.bundle/neobundle.vim
+call neobundle#rc('~/.bundle')
 
-" let Vundle manage Vundle {{{2
-Bundle 'git://gist.github.com/982781.git'
-Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'Shougo/neocomplcache.git'
-Bundle 'Shougo/unite.vim.git'
-Bundle 'Shougo/vimfiler.git'
-Bundle 'Shougo/vimproc.git'
-Bundle 'Shougo/vimshell.git'
-Bundle 'adie/BlockDiff.git'
-Bundle 'c9s/perlomni.vim.git'
-Bundle 'gmarik/vundle.git'
-Bundle 'h1mesuke/unite-outline.git'
-Bundle 'h1mesuke/vim-alignta.git'
-Bundle 'kana/vim-operator-replace.git'
-Bundle 'kana/vim-operator-user.git'
-Bundle 'kana/vim-textobj-fold'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'kana/vim-textobj-lastpat'
-Bundle 'kana/vim-textobj-user.git'
-Bundle 'kmnk/vim-unite-svn.git'
-Bundle 'koron/chalice'
-Bundle 'mattn/perldoc-vim.git'
-Bundle 'mattn/webapi-vim'
-Bundle 'motemen/hatena-vim'
-Bundle 'msanders/snipmate.vim.git'
-Bundle 'msanders/snipmate.vim.git'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 't9md/vim-textmanip.git'
-Bundle 'thinca/vim-poslist'
-Bundle 'thinca/vim-ref.git'
-Bundle 'thinca/vim-textobj-between.git'
-Bundle 'thinca/vim-textobj-comment.git'
-Bundle 'thinca/vim-visualstar'
-Bundle 'thinca/vim-openbuf'
-Bundle 'tpope/vim-repeat.git'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround.git'
-Bundle 'tyru/open-browser.vim.git'
-Bundle 'ujihisa/quickrun.git'
-Bundle 'vim-scripts/vimwiki.git'
-Bundle 'vim-scripts/yanktmp.vim.git'
-Bundle 'vimtaku/vim-textobj-doublecolon.git'
-Bundle 'vimtaku/vim-textobj-sigil.git'
-Bundle 'vimtaku/vim-mlh.git'
-Bundle 'ynkdir/vim-funlib'
-Bundle 'choplin/unite-vim_hacks'
-Bundle 'ujihisa/unite-colorscheme'
-Bundle 'ujihisa/unite-font'
-Bundle 'ujihisa/ref-hoogle.git'
-Bundle 't9md/vim-phrase'
-Bundle 'tomtom/tcomment_vim.git'
-Bundle 'vim-scripts/JavaScript-Indent.git'
-Bundle 'mattn/learn-vimscript.git'
-Bundle 'kana/vim-submode.git'
-Bundle 'saihoooooooo/vim-textobj-space.git'
-Bundle 'h1mesuke/ref-dicts-en.git'
-Bundle 'mojako/ref-alc.vim.git'
-Bundle 'eagletmt/unite-haddock.git'
+" " let Vundle manage Vundle {{{2
+"
 
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/digitaltoad/vim-jade.git'
+"NeoBundle 'git://github.com/Shougo/clang_complete.git'
+NeoBundle 'Shougo/neobundle.vim.git'
+NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'adie/BlockDiff.git'
+NeoBundle 'c9s/perlomni.vim.git'
+NeoBundle 'gmarik/vundle.git'
+NeoBundle 'h1mesuke/unite-outline.git'
+NeoBundle 'h1mesuke/vim-alignta.git'
+NeoBundle 'kana/vim-operator-replace.git'
+NeoBundle 'kana/vim-operator-user.git'
+NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-lastpat'
+NeoBundle 'kana/vim-textobj-user.git'
+NeoBundle 'kmnk/vim-unite-svn.git'
+NeoBundle 'kmnk/vim-unite-giti.git'
+NeoBundle 'koron/chalice'
+NeoBundle 'mattn/perldoc-vim.git'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'msanders/snipmate.vim.git'
+NeoBundle 'msanders/snipmate.vim.git'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 't9md/vim-textmanip.git'
+NeoBundle 'thinca/vim-poslist'
+NeoBundle 'thinca/vim-ref.git'
+NeoBundle 'thinca/vim-textobj-between.git'
+NeoBundle 'thinca/vim-textobj-comment.git'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'thinca/vim-openbuf'
+NeoBundle 'tpope/vim-repeat.git'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'tyru/open-browser.vim.git'
+NeoBundle 'ujihisa/quickrun.git'
+NeoBundle 'vim-scripts/vimwiki.git'
+NeoBundle 'vim-scripts/yanktmp.vim.git'
+NeoBundle 'vimtaku/vim-textobj-doublecolon.git'
+NeoBundle 'vimtaku/vim-textobj-sigil.git'
+NeoBundle 'vimtaku/vim-mlh.git'
+NeoBundle 'vimtaku/textobj-wiw.git'
+NeoBundle 'ynkdir/vim-funlib'
+NeoBundle 'choplin/unite-vim_hacks'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+NeoBundle 'ujihisa/ref-hoogle.git'
+NeoBundle 't9md/vim-phrase'
+NeoBundle 'tomtom/tcomment_vim.git'
+NeoBundle 'vim-scripts/JavaScript-Indent.git'
+NeoBundle 'mattn/learn-vimscript.git'
+NeoBundle 'kana/vim-submode.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'tyru/skk.vim.git'
+NeoBundle 'altercation/vim-colors-solarized.git'
 
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
+call <SID>vimrc_local($HOME)
 
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
+
+"Load settings for each location.
+augroup vimrc-local
+  autocmd!
+  autocmd BufRead,BufNewFile * call s:vimrc_local($HOME)
+augroup END
+
+
 
 " basic config. {{{2
 syntax on
@@ -106,6 +126,9 @@ set smartcase
 set hlsearch
 set incsearch
 
+" create swp data to only tmp directory
+set directory&
+set directory-=.
 
 "" encodings.
 if &encoding !=# 'utf-8'
@@ -180,10 +203,9 @@ set wildmenu
 
 " status line.
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %l/%L
+set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{fugitive#statusline()}%=%4v\ %l/%L
 
 set scrolloff=10
-
 
 " Enable mouse support.
 set mouse=a
@@ -207,6 +229,7 @@ endif
 
 
 set isfname-=:
+set isfname-=-
 
 "" color scheme.
 if (has('win32'))
@@ -229,9 +252,9 @@ endif
 
 " open new window vertical split when use gf.
 nnoremap gf :vsplit<CR>gf
+nnoremap gF <C-W>gf
 
 inoremap <C-j> <ESC>
-
 
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
@@ -255,11 +278,8 @@ nnoremap <S-tab> gT
 noremap g<CR> g;
 nnoremap <CR> :<C-u>w<CR>
 
-
-"noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
-"noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
+nnoremap q :<C-u>q<CR>
+nnoremap Q q
 
 noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
@@ -285,7 +305,6 @@ nnoremap <C-h> :noh<CR>
 map R <Plug>(operator-replace)
 
 
-
 " ref.vim
 let g:ref_perldoc_complete_head = 1
 
@@ -299,18 +318,24 @@ nnoremap [unite] <Nop>
 nmap ,u [unite]
 
 " Unite mappings
-nnoremap [unite]e  :<C-u>Unite file_rec<CR>
-nnoremap [unite]r  :<C-u>UniteResume<CR>
-nnoremap [unite]w  :<C-u>UniteWithBufferDir file file_rec<CR>
-nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file_rec<CR>
+nnoremap [unite]e  :<C-u>Unite file_rec file/new<CR>
+nnoremap [unite]w  :<C-u>UniteWithBufferDir file file/new file_rec<CR>
+nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file/new file_rec<CR>
 nnoremap [unite]l  :<C-u>Unite line<CR>
-nnoremap [unite]f  :<C-u>Unite file<CR>
+nnoremap [unite]f  :<C-u>Unite file file/new<CR>
 nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
-nnoremap [unite]B  :<C-u>Unite bookmark file<CR>
+nnoremap [unite]B  :<C-u>Unite bookmark file file/new<CR>
 nnoremap [unite]m  :<C-u>Unite file_mru<CR>
 nnoremap [unite]o  :<C-u>Unite outline<CR>
 nnoremap [unite]ss :<C-u>Unite svn/status<CR>
 nnoremap [unite]vh :<C-u>Unite vim_hacks<CR>
+nnoremap [unite]gs :<C-u>Unite giti/status<CR>
+nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
+nnoremap [unite]md :<C-u>Unite directory_mru<CR>
+
+nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '<CR>'
+
+
 
 " for unite window height
 let g:unite_winheight=10
@@ -325,7 +350,9 @@ map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
 " quickrun.vim
-silent! nmap <unique> ,r <Plug>(quickrun)
+silent! nmap ,r <Plug>(quickrun)
+silent! vnoremap ,r :QuickRun perl -exec '%c -Ilib %s'<CR>
+silent! vnoremap ,gr gv:QuickRun perl -exec '%c -Ilib %s'<CR>
 
 " for alingta
 vnoremap <silent> => :Align @1 =><CR>
@@ -335,7 +362,6 @@ vnoremap <silent> == =
 
 " for vimshell
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
 
 if has('win32') || has('win64')
@@ -386,6 +412,7 @@ endfunction
 " vimshell mappings
 nnoremap ,s :VimShell<CR>
 
+let g:vimshell_interactive_update_time = 300
 
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
@@ -486,7 +513,7 @@ nnoremap <silent> M :call <SID>JumpMiddle()<CR>
 "" for prove it automatically.
 let g:auto_prove_it_enable = 0
 
-function! s:toggle_prove_it()
+function! s:ToggleProveIt()
     if (g:auto_prove_it_enable == 0)
       let g:auto_prove_it_enable = 1
     else
@@ -494,7 +521,7 @@ function! s:toggle_prove_it()
     endif
 endfunction
 
-command! ToggleProveIt :call s:toggle_prove_it()
+command! ToggleProveIt :call s:ToggleProveIt()
 
 function! ProveItWrapper()
   if (g:auto_prove_it_enable == 1)
@@ -546,6 +573,9 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
+command! DeleteAlert :g/alert(/d
+command! DeleteConsole :g/console.\(log\|debug\)/d
+
 "" Qfix howm
 let QFixHowm_Key      = 'g'
 let howm_dir          = $HOME . '/Dropbox/howm'
@@ -555,15 +585,13 @@ let howm_fileencoding = 'utf8'
 let howm_fileformat   = 'unix'
 let g:QFixHowm_TitleListCache = 0
 
+nmap g, [howm]
 "howmディレクトリの切替
-nnoremap <silent> g,hh :echo howm_dir<CR>
-nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
-nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
-nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
-nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
-
-map <C-o> <Plug>(poslist-prev-pos)
-map <C-i> <Plug>(poslist-next-pos)
+nnoremap <silent> [howm]hh :echo howm_dir<CR>
+nnoremap <silent> [howm]ha :call HowmChEnv('', 'time', '=')<CR>
+nnoremap <silent> [howm]hm :call HowmChEnv('main', 'time', '=')<CR>
+nnoremap <silent> [howm]hw :call HowmChEnv('work', 'time', '=')<CR>
+nnoremap <silent> [howm]hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
 
 " new buffer
 command! Tempfile :e `=tempname()`
@@ -572,13 +600,14 @@ command! Tempfile :e `=tempname()`
 runtime macros/matchit.vim
 let b:match_words = &matchpairs . ',<TMPL_IF:</TMPL_IF>,<TMPL_LOOP:</TMPL_LOOP>'
 
-" gui indent guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 30
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=4
+
+" " gui indent guides
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_color_change_percent = 30
+" let g:indent_guides_auto_colors = 0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
 
 highlight Normal ctermfg=White
 
@@ -619,13 +648,6 @@ function! Sha256(data)
 endfunction
 
 
-" textobj-space
-let g:textobj_space_no_default_key_mappings = 1
-omap iS <Plug>(textobj-space)
-omap aS <Plug>(textobj-space)
-vmap iS <Plug>(textobj-space)
-vmap aS <Plug>(textobj-space)
-
 "}}}2 endof plugin mappings and so on.
 
 hi LineNr term=underline ctermfg=White ctermbg=Magenta
@@ -644,7 +666,6 @@ call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
 map gy  <Plug>(operator-yank-clipboard)
 
 
-
 function! s:JavascriptLambda()
     setlocal conceallevel=2
     syntax keyword javaScriptLambda function conceal cchar=\
@@ -657,4 +678,69 @@ augroup JavascriptLambda
   au!
   au BufRead,BufNewFile *.js :call s:JavascriptLambda()
 augroup END
+" vim --cmd "profile start result.txt" --cmd "profile file */plugin/*.vim" -c quit
+function! s:InspectVimStartup()
+    let s:list = []
+    global/^SCRIPT/
+    \ call add(s:list, printf("%s\t%s",
+    \                         matchstr(getline(line('.')+2), '\d\+\.\d\+'),
+    \                         matchstr(getline('.'), 'SCRIPT\s*\zs.*$')))
+    new
+    put =reverse(sort(s:list))
+    1 delete _
+endfunction
+command! -nargs=0 -range InspectVimStartup :call <SID>InspectVimStartup()
+
+
+let g:skk_control_j_key = "<C-a>"
+let g:skk_debug = "1"
+let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
+
+
+""" by thinca http://d.hatena.ne.jp/thinca/20111228/1325077104
+"" Call a script local function.
+"" Usage:
+"" - S('local_func')
+""   -> call s:local_func() in current file.
+"" - S('plugin/hoge.vim:local_func', 'string', 10)
+""   -> call s:local_func('string', 10) in *plugin/hoge.vim.
+"" - S('plugin/hoge:local_func("string", 10)')
+""   -> call s:local_func("string", 10) in *plugin/hoge(.vim)?.
+"function! S(f, ...)
+"  let [file, func] =a:f =~# ':' ?  split(a:f, ':') : [expand('%:p'), a:f]
+"  let fname = matchstr(func, '^\w*')
+"
+"  " Get sourced scripts.
+"  redir =>slist
+"  scriptnames
+"  redir END
+"
+"  let filepat = '\V' . substitute(file, '\\', '/', 'g') . '\v%(\.vim)?$'
+"  for s in split(slist, "\n")
+"    let p = matchlist(s, '^\s*\(\d\+\):\s*\(.*\)$')
+"    if empty(p)
+"      continue
+"    endif
+"    let [nr, sfile] = p[1 : 2]
+"    let sfile = fnamemodify(sfile, ':p:gs?\\?/?')
+"    if sfile =~# filepat &&
+"    \    exists(printf("*\<SNR>%d_%s", nr, fname))
+"      let cfunc = printf("\<SNR>%d_%s", nr, func)
+"      break
+"    endif
+"  endfor
+"
+"  if !exists('nr')
+"    echoerr Not sourced: ' . file
+"    return
+"  elseif !exists('cfunc')
+"    let file = fnamemodify(file, ':p')
+"    echoerr printf(
+"    \    'File found, but function is not defined: %s: %s()', file, fname)
+"    return
+"  endif
+"
+"  return 0 <= match(func, '^\w*\s*(.*)\s*$')
+"  \      ? eval(cfunc) : call(cfunc, a:000)
+"endfunction
 
