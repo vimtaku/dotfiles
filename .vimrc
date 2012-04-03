@@ -71,6 +71,9 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
+NeoBundle 'ujihisa/shadow.vim'
+
+
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
   for i in reverse(filter(files, 'filereadable(v:val)'))
@@ -743,4 +746,15 @@ let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
 "  return 0 <= match(func, '^\w*\s*(.*)\s*$')
 "  \      ? eval(cfunc) : call(cfunc, a:000)
 "endfunction
+
+
+command! StartGuard :call vimproc#system('perl $HOME/guard_start.pl')
+command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_start.pl')
+
+nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
+
+augroup QuickRunCoffeeAndMocha
+  autocmd!
+  autocmd Filetype coffee nmap ,r [quickrun_mocha]
+augroup END
 
