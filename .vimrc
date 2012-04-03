@@ -124,9 +124,14 @@ set smartcase
 set hlsearch
 set incsearch
 
+
+set autoread
+set noswapfile
+
+
 " create swp data to only tmp directory
-set directory&
-set directory-=.
+"set directory&
+"set directory-=.
 
 "" encodings.
 if &encoding !=# 'utf-8'
@@ -201,7 +206,8 @@ set wildmenu
 
 " status line.
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{fugitive#statusline()}%=%4v\ %l/%L
+set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%4v\ %l/%L
+set showcmd
 
 set scrolloff=10
 
