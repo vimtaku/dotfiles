@@ -38,6 +38,11 @@ Bundle 'git://github.com/motemen/hatena-vim'
 Bundle 'git://gist.github.com/982781.git'
 
 
+Bundle 'git://github.com/kchmck/vim-coffee-script.git'
+Bundle 'git://github.com/ujihisa/shadow.vim.git'
+
+
+
 filetype plugin indent on
 
 call pathogen#runtime_append_all_bundles()
@@ -185,6 +190,7 @@ nnoremap gf :vsplit<CR>gf
 
 
 inoremap <C-j> <ESC>
+cnoremap <C-j> <ESC>
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
 cnoremap <C-y> <C-w>
