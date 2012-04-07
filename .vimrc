@@ -765,6 +765,7 @@ command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_star
 
 nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
 
+
 augroup QuickRunCoffeeAndMocha
   autocmd!
   autocmd Filetype coffee nmap ,r [quickrun_mocha]
