@@ -1,56 +1,104 @@
-
+" vim:set fen fdm=marker:
+" Basic {{{1
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.bundle/neobundle.vim
+call neobundle#rc('~/.bundle')
 
-" let Vundle manage Vundle
-Bundle 'git://github.com/gmarik/vundle.git'
-Bundle 'git://github.com/kana/vim-operator-user.git'
-Bundle 'git://github.com/kana/vim-operator-replace.git'
-Bundle 'git://github.com/Shougo/vimshell.git'
-Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/Shougo/vimfiler.git'
-Bundle 'git://github.com/thinca/vim-ref.git'
-Bundle 'git://github.com/mattn/perldoc-vim.git'
-Bundle 'git://github.com/c9s/perlomni.vim.git'
-Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://github.com/ujihisa/quickrun.git'
-Bundle 'git://github.com/thinca/vim-textobj-comment.git'
-Bundle 'git://github.com/thinca/vim-textobj-between.git'
-Bundle 'git://github.com/kmnk/vim-unite-svn.git'
-Bundle 'git://github.com/vim-scripts/yanktmp.vim.git'
-Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-sigil.git'
-Bundle 'git://github.com/vimtaku/vim-textobj-doublecolon.git'
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/h1mesuke/unite-outline.git'
-Bundle 'git://github.com/tyru/open-browser.vim.git'
-Bundle 'git://github.com/vim-scripts/vimwiki.git'
-Bundle 'git://github.com/motemen/hatena-vim'
-Bundle 'git://gist.github.com/982781.git'
+" " let Vundle manage Vundle {{{2
+"
+
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/digitaltoad/vim-jade.git'
+"NeoBundle 'git://github.com/Shougo/clang_complete.git'
+NeoBundle 'Shougo/neobundle.vim.git'
+NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'adie/BlockDiff.git'
+NeoBundle 'c9s/perlomni.vim.git'
+NeoBundle 'gmarik/vundle.git'
+NeoBundle 'h1mesuke/unite-outline.git'
+NeoBundle 'h1mesuke/vim-alignta.git'
+NeoBundle 'kana/vim-operator-replace.git'
+NeoBundle 'kana/vim-operator-user.git'
+NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-lastpat'
+NeoBundle 'kana/vim-textobj-user.git'
+NeoBundle 'kmnk/vim-unite-svn.git'
+NeoBundle 'kmnk/vim-unite-giti.git'
+NeoBundle 'koron/chalice'
+NeoBundle 'mattn/perldoc-vim.git'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'msanders/snipmate.vim.git'
+NeoBundle 'msanders/snipmate.vim.git'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 't9md/vim-textmanip.git'
+NeoBundle 'thinca/vim-poslist'
+NeoBundle 'thinca/vim-ref.git'
+NeoBundle 'thinca/vim-textobj-between.git'
+NeoBundle 'thinca/vim-textobj-comment.git'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'thinca/vim-openbuf'
+NeoBundle 'tpope/vim-repeat.git'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'tyru/open-browser.vim.git'
+NeoBundle 'ujihisa/quickrun.git'
+NeoBundle 'vim-scripts/vimwiki.git'
+NeoBundle 'vim-scripts/yanktmp.vim.git'
+NeoBundle 'vimtaku/vim-textobj-doublecolon.git'
+NeoBundle 'vimtaku/vim-textobj-sigil.git'
+NeoBundle 'vimtaku/vim-mlh.git'
+NeoBundle 'vimtaku/textobj-wiw.git'
+NeoBundle 'ynkdir/vim-funlib'
+NeoBundle 'choplin/unite-vim_hacks'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+NeoBundle 'ujihisa/ref-hoogle.git'
+NeoBundle 't9md/vim-phrase'
+NeoBundle 'tomtom/tcomment_vim.git'
+NeoBundle 'vim-scripts/JavaScript-Indent.git'
+NeoBundle 'mattn/learn-vimscript.git'
+NeoBundle 'kana/vim-submode.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'tyru/skk.vim.git'
+NeoBundle 'altercation/vim-colors-solarized.git'
+
+NeoBundle 'ujihisa/shadow.vim'
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 
 
-Bundle 'git://github.com/kchmck/vim-coffee-script.git'
-Bundle 'git://github.com/ujihisa/shadow.vim.git'
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
+call <SID>vimrc_local($HOME)
+
 
 
 
 filetype plugin indent on
-
 call pathogen#runtime_append_all_bundles()
 
-let g:neocomplcache_enable_at_startup = 1
+"Load settings for each location.
+augroup vimrc-local
+  autocmd!
+  autocmd BufRead,BufNewFile * call s:vimrc_local($HOME)
+augroup END
 
 
-"" basic config.
+
+" basic config. {{{2
 syntax on
 set nocompatible
 
@@ -69,7 +117,7 @@ set cpoptions+=y
 set list
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,
 
-" 縦分割をする際、新しいウィンドウを右側に作る
+" when create new window split vertically, create window right side
 set splitright
 
 set backspace=2
@@ -86,6 +134,14 @@ set smartcase
 set hlsearch
 set incsearch
 
+
+set autoread
+set noswapfile
+
+
+" create swp data to only tmp directory
+"set directory&
+"set directory-=.
 
 "" encodings.
 if &encoding !=# 'utf-8'
@@ -160,13 +216,34 @@ set wildmenu
 
 " status line.
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %l/%L
+set statusline=%<%f\%m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%4v\ %l/%L
+set showcmd
 
 set scrolloff=10
 
+" Enable mouse support.
 set mouse=a
+" For screen.
+if &term =~ "^screen"
+    augroup MyAutoCmd
+        autocmd!
+        autocmd VimLeave * :set mouse=
+     augroup END
+    " screenでマウスを使用するとフリーズするのでその対策
+    set ttymouse=xterm2
+endif
+if has('gui_running')
+    " Show popup menu if right click.
+    set mousemodel=popup
+    " Don't focus the window when the mouse pointer is moved.
+    set nomousefocus
+    " Hide mouse pointer on insert mode.
+    set mousehide
+endif
 
-set ttymouse=xterm2
+
+set isfname-=:
+set isfname-=-
 
 "" color scheme.
 if (has('win32'))
@@ -183,14 +260,17 @@ else
     endif
 endif
 
-""" mappings.
+" end of basic conf. }}}2
+
+" mappings. {{{2
 
 " open new window vertical split when use gf.
 nnoremap gf :vsplit<CR>gf
-
+nnoremap gF <C-W>gf
 
 inoremap <C-j> <ESC>
 cnoremap <C-j> <ESC>
+
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
 cnoremap <C-y> <C-w>
@@ -201,7 +281,6 @@ noremap <C-j> <C-d>
 nnoremap j gj
 nnoremap k gk
 
-"noremap dw de
 noremap <Space> <C-w>
 
 " move tab focus
@@ -214,11 +293,8 @@ nnoremap <S-tab> gT
 noremap g<CR> g;
 nnoremap <CR> :<C-u>w<CR>
 
-noremap ( /(<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap ) /)<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap { /{<CR>:call histdel('/', -1)<CR>:noh<CR>
-noremap } /}<CR>:call histdel('/', -1)<CR>:noh<CR>
-
+nnoremap q :<C-u>q<CR>
+nnoremap Q q
 
 noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
@@ -228,12 +304,21 @@ nnoremap : q:a
 nnoremap / q/a
 nnoremap <silent> <BS> :<C-u>noh<CR>
 
+" reselect paste resion
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+" paste yanked string vertically
+vnoremap <C-p> I<C-r>"<ESC><ESC>
 
-""" for plugin mappings.
+nnoremap <C-h> :noh<CR>
 
+"}}}2
+
+
+""" for plugin mappings.{{{2
 
 " for operator replace
 map R <Plug>(operator-replace)
+
 
 " ref.vim
 let g:ref_perldoc_complete_head = 1
@@ -242,22 +327,37 @@ let g:ref_perldoc_complete_head = 1
 nmap s <Plug>Ysurround
 nmap ss <Plug>Yssurround
 
+" unite prefix key
+nnoremap [unite] <Nop>
+
+nmap ,u [unite]
+
 " Unite mappings
-nnoremap ,ue :Unite file_rec<CR>
-nnoremap ,ur :UniteResume<CR>
-nnoremap ,uw :UniteWithBufferDir file<CR>
-nnoremap ,uc :UniteWithCurrentDir file<CR>
-nnoremap ,ul :Unite line<CR>
-nnoremap ,uf :Unite file<CR>
-nnoremap ,ub :Unite tab buffer<CR>
-nnoremap ,uB :Unite bookmark file<CR>
-nnoremap ,um :Unite file_mru<CR>
-nnoremap ,uo :Unite outline<CR>
-nnoremap ,uss :Unite svn/status<CR>
+nnoremap [unite]e  :<C-u>Unite file_rec file/new<CR>
+nnoremap [unite]w  :<C-u>UniteWithBufferDir file file/new file_rec<CR>
+nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file/new file_rec<CR>
+nnoremap [unite]l  :<C-u>Unite line<CR>
+nnoremap [unite]f  :<C-u>Unite file file/new<CR>
+nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
+nnoremap [unite]B  :<C-u>Unite bookmark file file/new<CR>
+nnoremap [unite]m  :<C-u>Unite file_mru<CR>
+nnoremap [unite]o  :<C-u>Unite outline<CR>
+nnoremap [unite]ss :<C-u>Unite svn/status<CR>
+nnoremap [unite]vh :<C-u>Unite vim_hacks<CR>
+nnoremap [unite]gs :<C-u>Unite giti/status<CR>
+nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
+nnoremap [unite]md :<C-u>Unite directory_mru<CR>
+
+nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '<CR>'
+
+
 
 " for unite window height
 let g:unite_winheight=10
+let g:unite_source_history_yank_enable=1
 
+" for neocom
+let g:neocomplcache_enable_at_startup = 1
 
 " for yanktmp
 map <silent> sy :call YanktmpYank()<CR>
@@ -265,7 +365,9 @@ map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
 " quickrun.vim
-silent! nmap <unique> ,r <Plug>(quickrun)
+silent! nmap ,r <Plug>(quickrun)
+silent! vnoremap ,r :QuickRun perl -exec '%c -Ilib %s'<CR>
+silent! vnoremap ,gr gv:QuickRun perl -exec '%c -Ilib %s'<CR>
 
 " for alingta
 vnoremap <silent> => :Align @1 =><CR>
@@ -275,10 +377,9 @@ vnoremap <silent> == =
 
 " for vimshell
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
 
-if has('win32') || has('win64') 
+if has('win32') || has('win64')
   " Display user name on Windows.
   let g:vimshell_prompt = $USERNAME."% "
 else
@@ -326,17 +427,7 @@ endfunction
 " vimshell mappings
 nnoremap ,s :VimShell<CR>
 
-
-
-" 選択したテキストの移動
-vmap <C-j> <Plug>(Textmanip.move_selection_down)
-vmap <C-l> <Plug>(Textmanip.move_selection_right)
-vmap <C-k> <Plug>(Textmanip.move_selection_up)
-vmap <C-h> <Plug>(Textmanip.move_selection_left)
-
-" 行の複製
-vmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
-nmap <C-d> <Plug>(Textmanip.duplicate_selection_n)
+let g:vimshell_interactive_update_time = 300
 
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
@@ -362,9 +453,7 @@ augroup Vimwiki
     autocmd Filetype,BufEnter vimwiki :call Space_Mapping_VimwikiToggleListItem()
 augroup END
 
-
 "" util.
-
 function! DataDumper()
     let l:use_str = 'use Data::Dumper;'
     let l:yanked = getreg('""')
@@ -439,7 +528,7 @@ nnoremap <silent> M :call <SID>JumpMiddle()<CR>
 "" for prove it automatically.
 let g:auto_prove_it_enable = 0
 
-function! s:toggle_prove_it()
+function! s:ToggleProveIt()
     if (g:auto_prove_it_enable == 0)
       let g:auto_prove_it_enable = 1
     else
@@ -447,7 +536,7 @@ function! s:toggle_prove_it()
     endif
 endfunction
 
-command! ToggleProveIt :call s:toggle_prove_it()
+command! ToggleProveIt :call s:ToggleProveIt()
 
 function! ProveItWrapper()
   if (g:auto_prove_it_enable == 1)
@@ -499,6 +588,8 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
+command! DeleteAlert :g/alert(/d
+command! DeleteConsole :g/console.\(log\|debug\)/d
 
 "" Qfix howm
 let QFixHowm_Key      = 'g'
@@ -509,10 +600,173 @@ let howm_fileencoding = 'utf8'
 let howm_fileformat   = 'unix'
 let g:QFixHowm_TitleListCache = 0
 
+nmap g, [howm]
 "howmディレクトリの切替
-nnoremap <silent> g,hh :echo howm_dir<CR>
-nnoremap <silent> g,ha :call HowmChEnv('', 'time', '=')<CR>
-nnoremap <silent> g,hm :call HowmChEnv('main', 'time', '=')<CR>
-nnoremap <silent> g,hw :call HowmChEnv('work', 'time', '=')<CR>
-nnoremap <silent> g,hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
+nnoremap <silent> [howm]hh :echo howm_dir<CR>
+nnoremap <silent> [howm]ha :call HowmChEnv('', 'time', '=')<CR>
+nnoremap <silent> [howm]hm :call HowmChEnv('main', 'time', '=')<CR>
+nnoremap <silent> [howm]hw :call HowmChEnv('work', 'time', '=')<CR>
+nnoremap <silent> [howm]hu :call HowmChEnv('ubuntu',   'time', '=')<CR>
+
+" new buffer
+command! Tempfile :e `=tempname()`
+
+" read matchit
+runtime macros/matchit.vim
+let b:match_words = &matchpairs . ',<TMPL_IF:</TMPL_IF>,<TMPL_LOOP:</TMPL_LOOP>'
+
+
+" " gui indent guides
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_color_change_percent = 30
+" let g:indent_guides_auto_colors = 0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
+
+highlight Normal ctermfg=White
+
+"" set tab color
+hi TabLineSel ctermbg=DarkMagenta
+
+" url encode by alice.vim
+function! s:URLEncode()
+    let l:line = getline('.')
+    let l:encoded = AL_urlencode(l:line)
+    call setline('.', l:encoded)
+endfunction
+
+function! s:URLDecode()
+    let l:line = getline('.')
+    let l:decoded = AL_urldecode(l:line)
+    call setline('.', l:decoded)
+endfunction
+command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
+command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
+
+
+" Randome, MD5, Sha1, Sha256 functions
+function! Random(a, b)
+    return random#randint(a:a, a:b)
+endfunction
+
+function! MD5(data)
+    return hashlib#md5(a:data)
+endfunction
+
+function! Sha1(data)
+    return hashlib#sha1(a:data)
+endfunction
+
+function! Sha256(data)
+    return hashlib#sha256(a:data)
+endfunction
+
+
+"}}}2 endof plugin mappings and so on.
+
+hi LineNr term=underline ctermfg=White ctermbg=Magenta
+
+
+let g:tcommentMapLeaderOp1='go'
+let g:tcommentMapLeaderOp2='gO'
+
+function! OperatorYankClipboard(motion_wiseness)
+  let visual_commnad =
+  \ operator#user#visual_command_from_wise_name(a:motion_wiseness)
+  execute 'normal!' '`['.visual_commnad.'`]"+y'
+endfunction
+
+call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
+map gy  <Plug>(operator-yank-clipboard)
+
+
+function! s:JavascriptLambda()
+    setlocal conceallevel=2
+    syntax keyword javaScriptLambda function conceal cchar=\
+    highlight clear Conceal
+    highlight link Conceal Identifier
+    highlight link javaScriptLambda Identifier
+endf
+
+augroup JavascriptLambda
+  au!
+  au BufRead,BufNewFile *.js :call s:JavascriptLambda()
+augroup END
+" vim --cmd "profile start result.txt" --cmd "profile file */plugin/*.vim" -c quit
+function! s:InspectVimStartup()
+    let s:list = []
+    global/^SCRIPT/
+    \ call add(s:list, printf("%s\t%s",
+    \                         matchstr(getline(line('.')+2), '\d\+\.\d\+'),
+    \                         matchstr(getline('.'), 'SCRIPT\s*\zs.*$')))
+    new
+    put =reverse(sort(s:list))
+    1 delete _
+endfunction
+command! -nargs=0 -range InspectVimStartup :call <SID>InspectVimStartup()
+
+
+let g:skk_control_j_key = "<C-a>"
+let g:skk_debug = "1"
+let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
+
+
+""" by thinca http://d.hatena.ne.jp/thinca/20111228/1325077104
+"" Call a script local function.
+"" Usage:
+"" - S('local_func')
+""   -> call s:local_func() in current file.
+"" - S('plugin/hoge.vim:local_func', 'string', 10)
+""   -> call s:local_func('string', 10) in *plugin/hoge.vim.
+"" - S('plugin/hoge:local_func("string", 10)')
+""   -> call s:local_func("string", 10) in *plugin/hoge(.vim)?.
+"function! S(f, ...)
+"  let [file, func] =a:f =~# ':' ?  split(a:f, ':') : [expand('%:p'), a:f]
+"  let fname = matchstr(func, '^\w*')
+"
+"  " Get sourced scripts.
+"  redir =>slist
+"  scriptnames
+"  redir END
+"
+"  let filepat = '\V' . substitute(file, '\\', '/', 'g') . '\v%(\.vim)?$'
+"  for s in split(slist, "\n")
+"    let p = matchlist(s, '^\s*\(\d\+\):\s*\(.*\)$')
+"    if empty(p)
+"      continue
+"    endif
+"    let [nr, sfile] = p[1 : 2]
+"    let sfile = fnamemodify(sfile, ':p:gs?\\?/?')
+"    if sfile =~# filepat &&
+"    \    exists(printf("*\<SNR>%d_%s", nr, fname))
+"      let cfunc = printf("\<SNR>%d_%s", nr, func)
+"      break
+"    endif
+"  endfor
+"
+"  if !exists('nr')
+"    echoerr Not sourced: ' . file
+"    return
+"  elseif !exists('cfunc')
+"    let file = fnamemodify(file, ':p')
+"    echoerr printf(
+"    \    'File found, but function is not defined: %s: %s()', file, fname)
+"    return
+"  endif
+"
+"  return 0 <= match(func, '^\w*\s*(.*)\s*$')
+"  \      ? eval(cfunc) : call(cfunc, a:000)
+"endfunction
+
+
+command! StartGuard :call vimproc#system('perl $HOME/guard_start.pl')
+command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_start.pl')
+
+nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
+
+augroup QuickRunCoffeeAndMocha
+  autocmd!
+  autocmd Filetype coffee nmap ,r [quickrun_mocha]
+augroup END
 

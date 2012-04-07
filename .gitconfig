@@ -1,3 +1,10 @@
 [user]
-	email = vimtaku@gmail.com
-	name = vimtaku
+    email = vimtaku@gmail.com
+    name = vimtaku
+
+[alias]
+    b = branch
+    st = status
+    di = diff
+    co = checkout
+    ci = commit
