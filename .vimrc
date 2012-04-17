@@ -71,12 +71,8 @@ NeoBundle 'kana/vim-submode.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
-
-<<<<<<< HEAD
-=======
 NeoBundle 'ujihisa/shadow.vim'
 
->>>>>>> 869637aa832ab592c3bcaaa8b2c5677a4735b122
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
