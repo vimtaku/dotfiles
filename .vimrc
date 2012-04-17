@@ -9,7 +9,9 @@ call neobundle#rc('~/.bundle')
 " " let Vundle manage Vundle {{{2
 "
 
-NeoBundle 'git://github.com/Shougo/clang_complete.git'
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/digitaltoad/vim-jade.git'
+"NeoBundle 'git://github.com/Shougo/clang_complete.git'
 NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'Shougo/neocomplcache.git'
@@ -70,6 +72,11 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 
+<<<<<<< HEAD
+=======
+NeoBundle 'ujihisa/shadow.vim'
+
+>>>>>>> 869637aa832ab592c3bcaaa8b2c5677a4735b122
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
@@ -284,7 +291,7 @@ nnoremap <S-tab> gT
 noremap g<CR> g;
 nnoremap <CR> :<C-u>w<CR>
 
-nnoremap q :q<CR>
+nnoremap q :<C-u>q<CR>
 nnoremap Q q
 
 noremap ,ev :e ~/.vimrc<CR>
@@ -672,6 +679,18 @@ call operator#user#define('yank-clipboard', 'OperatorYankClipboard')
 map gy  <Plug>(operator-yank-clipboard)
 
 
+function! s:JavascriptLambda()
+    setlocal conceallevel=2
+    syntax keyword javaScriptLambda function conceal cchar=\
+    highlight clear Conceal
+    highlight link Conceal Identifier
+    highlight link javaScriptLambda Identifier
+endf
+
+augroup JavascriptLambda
+  au!
+  au BufRead,BufNewFile *.js :call s:JavascriptLambda()
+augroup END
 " vim --cmd "profile start result.txt" --cmd "profile file */plugin/*.vim" -c quit
 function! s:InspectVimStartup()
     let s:list = []
@@ -739,3 +758,12 @@ let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
 "endfunction
 
 
+command! StartGuard :call vimproc#system('perl $HOME/guard_start.pl')
+command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_start.pl')
+
+nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
+
+augroup QuickRunCoffeeAndMocha
+  autocmd!
+  autocmd Filetype coffee nmap ,r [quickrun_mocha]
+augroup END
