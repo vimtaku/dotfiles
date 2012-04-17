@@ -53,6 +53,7 @@ NeoBundle 'vim-scripts/vimwiki.git'
 NeoBundle 'vim-scripts/yanktmp.vim.git'
 NeoBundle 'vimtaku/vim-textobj-doublecolon.git'
 NeoBundle 'vimtaku/vim-textobj-sigil.git'
+NeoBundle 'vimtaku/vim-textobj-keyvalue.git'
 NeoBundle 'vimtaku/vim-mlh.git'
 NeoBundle 'vimtaku/textobj-wiw.git'
 NeoBundle 'ynkdir/vim-funlib'
@@ -68,6 +69,7 @@ NeoBundle 'kana/vim-submode.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
+
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
@@ -735,4 +737,5 @@ let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
 "  return 0 <= match(func, '^\w*\s*(.*)\s*$')
 "  \      ? eval(cfunc) : call(cfunc, a:000)
 "endfunction
+
 
