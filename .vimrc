@@ -75,7 +75,6 @@ NeoBundle 'kana/vim-submode.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
-
 NeoBundle 'ujihisa/shadow.vim'
 
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
