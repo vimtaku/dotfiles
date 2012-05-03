@@ -77,8 +77,11 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ujihisa/shadow.vim'
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
+NeoBundle "git://github.com/vim-scripts/VimRepress"
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
@@ -87,6 +90,9 @@ function! s:vimrc_local(loc)
   endfor
 endfunction
 call <SID>vimrc_local($HOME)
+
+
+
 
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
@@ -270,6 +276,7 @@ nnoremap gf :vsplit<CR>gf
 nnoremap gF <C-W>gf
 
 inoremap <C-j> <ESC>
+cnoremap <C-j> <ESC>
 
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
@@ -431,6 +438,13 @@ let g:vimshell_interactive_update_time = 300
 
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
+
+
+" for VimRepress
+let VIMPRESS = [{'username':'vimtaku',
+                \'blog_url':'http://qolwu.com/'
+                \}]
+
 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
@@ -718,6 +732,7 @@ command! StartGuard :call vimproc#system('perl $HOME/guard_start.pl')
 command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_start.pl')
 
 nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
+
 
 augroup QuickRunCoffeeAndMocha
   autocmd!
