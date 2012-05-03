@@ -80,6 +80,7 @@ NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
 NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
+NeoBundle "git://github.com/vim-scripts/VimRepress"
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
@@ -436,6 +437,13 @@ let g:vimshell_interactive_update_time = 300
 
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
+
+
+" for VimRepress
+let VIMPRESS = [{'username':'vimtaku',
+                \'blog_url':'http://qolwu.com/'
+                \}]
+
 
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
