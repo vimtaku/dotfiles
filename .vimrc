@@ -6,8 +6,12 @@ filetype off
 set runtimepath+=~/.bundle/neobundle.vim
 call neobundle#rc('~/.bundle')
 
-" " let Vundle manage Vundle {{{2
-"
+
+let g:skk_control_j_key = ""
+let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
+
+
+""" let Vundle manage Vundle {{{2
 
 NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
 NeoBundle 'git://github.com/digitaltoad/vim-jade.git'
@@ -58,6 +62,7 @@ NeoBundle 'vimtaku/vim-textobj-sigil.git'
 NeoBundle 'vimtaku/vim-textobj-keyvalue.git'
 NeoBundle 'vimtaku/vim-mlh.git'
 NeoBundle 'vimtaku/textobj-wiw.git'
+NeoBundle 'vimtaku/mixi-graph-api.git'
 NeoBundle 'ynkdir/vim-funlib'
 NeoBundle 'choplin/unite-vim_hacks'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -72,7 +77,11 @@ NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ujihisa/shadow.vim'
+NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 
+NeoBundle 'git://github.com/wavded/vim-stylus.git'
+NeoBundle "git://github.com/vim-scripts/VimRepress"
 
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
@@ -81,6 +90,9 @@ function! s:vimrc_local(loc)
   endfor
 endfunction
 call <SID>vimrc_local($HOME)
+
+
+
 
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
@@ -265,6 +277,7 @@ nnoremap gf :vsplit<CR>gf
 nnoremap gF <C-W>gf
 
 inoremap <C-j> <ESC>
+cnoremap <C-j> <ESC>
 
 inoremap <C-l> <C-x><C-l>
 inoremap <C-y> <C-w>
@@ -429,6 +442,13 @@ let g:vimshell_interactive_update_time = 300
 " for hatena-vim
 let g:hatena_user = 'vimtaku'
 
+
+" for VimRepress
+let VIMPRESS = [{'username':'vimtaku',
+                \'blog_url':'http://qolwu.com/'
+                \}]
+
+
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
@@ -450,6 +470,12 @@ augroup Vimwiki
     autocmd Filetype,BufEnter vimwiki :call Space_Mapping_VimwikiToggleListItem()
 augroup END
 
+
+" for vim mlh
+imap <C-b> <Plug>(vim_mlh-i_retransliterate)<C-n>
+nmap <C-b> <Plug>(vim_mlh-retransliterate)<C-n>
+
+
 "" util.
 function! DataDumper()
     let l:use_str = 'use Data::Dumper;'
@@ -469,7 +495,8 @@ endf
 augroup Dumpers
     :au!
     au Filetype perl noremap ,z :call DataDumper()<CR>
-    au Filetype javascript noremap ,z o<ESC>p_iconsole.debug(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
+    au Filetype javascript noremap ,z o<ESC>p_iconsole.log(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
+    au Filetype coffee noremap ,z o<ESC>p_iconsole.log<Space><ESC>A<ESC>yypkf<Space>a'<ESC>A='<ESC>=j
     au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
     au Filetype php noremap ,z o<ESC>p_ivar_dump("<ESC>A=".<ESC>pa);<ESC>
 aug END
@@ -705,65 +732,78 @@ endfunction
 command! -nargs=0 -range InspectVimStartup :call <SID>InspectVimStartup()
 
 
-let g:skk_control_j_key = "<C-a>"
-let g:skk_debug = "1"
-let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
-
-
-""" by thinca http://d.hatena.ne.jp/thinca/20111228/1325077104
-"" Call a script local function.
-"" Usage:
-"" - S('local_func')
-""   -> call s:local_func() in current file.
-"" - S('plugin/hoge.vim:local_func', 'string', 10)
-""   -> call s:local_func('string', 10) in *plugin/hoge.vim.
-"" - S('plugin/hoge:local_func("string", 10)')
-""   -> call s:local_func("string", 10) in *plugin/hoge(.vim)?.
-"function! S(f, ...)
-"  let [file, func] =a:f =~# ':' ?  split(a:f, ':') : [expand('%:p'), a:f]
-"  let fname = matchstr(func, '^\w*')
-"
-"  " Get sourced scripts.
-"  redir =>slist
-"  scriptnames
-"  redir END
-"
-"  let filepat = '\V' . substitute(file, '\\', '/', 'g') . '\v%(\.vim)?$'
-"  for s in split(slist, "\n")
-"    let p = matchlist(s, '^\s*\(\d\+\):\s*\(.*\)$')
-"    if empty(p)
-"      continue
-"    endif
-"    let [nr, sfile] = p[1 : 2]
-"    let sfile = fnamemodify(sfile, ':p:gs?\\?/?')
-"    if sfile =~# filepat &&
-"    \    exists(printf("*\<SNR>%d_%s", nr, fname))
-"      let cfunc = printf("\<SNR>%d_%s", nr, func)
-"      break
-"    endif
-"  endfor
-"
-"  if !exists('nr')
-"    echoerr Not sourced: ' . file
-"    return
-"  elseif !exists('cfunc')
-"    let file = fnamemodify(file, ':p')
-"    echoerr printf(
-"    \    'File found, but function is not defined: %s: %s()', file, fname)
-"    return
-"  endif
-"
-"  return 0 <= match(func, '^\w*\s*(.*)\s*$')
-"  \      ? eval(cfunc) : call(cfunc, a:000)
-"endfunction
-
-
 command! StartGuard :call vimproc#system('perl $HOME/guard_start.pl')
 command! RestartGuard :call vimproc#system('pkill guard && perl $HOME/guard_start.pl')
 
 nnoremap [quickrun_mocha] :execute("QuickRun mocha -runmode async:vimproc:40 -exec '%c " . substitute( substitute( expand('%:p'), 'coffee', 'Resources', ''), 'coffee', 'js', '') . "'")<CR>
 
+
 augroup QuickRunCoffeeAndMocha
   autocmd!
   autocmd Filetype coffee nmap ,r [quickrun_mocha]
 augroup END
+
+augroup StylusAutoCompile
+  au!
+  au BufWritePost *.styl :QuickRun -runmode async:vimproc:40 -exec "stylus %s" -output _
+augroup END
+
+
+"" Create help contents command by thinca http://d.hatena.ne.jp/thinca/20110903/1314982646
+command! -buffer -bar GenerateContents call s:generate_contents()
+function! s:generate_contents()
+  let cursor = getpos('.')
+
+  let plug_name = expand('%:t:r')
+  let ja = expand('%:e') ==? 'jax'
+  1
+
+  if search(plug_name . '-contents\*$', 'W')
+    silent .+1;/^=\{78}$/-1 delete _
+    .-1
+    put =''
+  else
+    /^License:/+1
+    let header = printf('%s%s*%s-contents*', (ja ? "目次\t" : 'CONTENTS'),
+    \            repeat("\t", 5), plug_name)
+    silent put =['', repeat('=', 78), header]
+    .+1
+  endif
+
+  let contents_pos = getpos('.')
+
+  let lines = []
+  while search('^\([=-]\)\1\{77}$', 'W')
+    let head = getline('.') =~ '=' ? '' : '  '
+    .+1
+    let caption = matchlist(getline('.'), '^\([^\t]*\)\t\+\*\(\S*\)\*$')
+    if !empty(caption)
+      let [title, tag] = caption[1 : 2]
+      call add(lines, printf("%s%s\t%s|%s|", head, title, head, tag))
+    endif
+  endwhile
+
+  call setpos('.', contents_pos)
+
+  silent put =lines + ['', '']
+  call setpos('.', contents_pos)
+  let len = len(lines)
+  setlocal expandtab tabstop=32
+  execute '.,.+' . len . 'retab'
+  setlocal noexpandtab tabstop=8
+  execute '.,.+' . len . 'retab!'
+
+  call setpos('.', cursor)
+endfunction
+
+
+
+function! SetColumnWidthLimit()
+  setlocal textwidth=78
+  if exists('+colorcolumn')
+    setlocal colorcolumn=+1
+  endif
+endfun
+
+au Filetype perl,javascript,vim call SetColumnWidthLimit()
+
