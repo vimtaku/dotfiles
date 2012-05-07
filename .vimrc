@@ -104,6 +104,7 @@ set expandtab
 
 set cinkeys-=0#
 set cindent
+set smartindent
 
 " when use . command, repeat yank.
 set cpoptions+=y
@@ -294,6 +295,7 @@ noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
 noremap ,v :r! cat -<CR>
 
+
 nnoremap : q:a
 nnoremap / q/a
 nnoremap <silent> <BS> :<C-u>noh<CR>
@@ -349,6 +351,7 @@ nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '
 " for unite window height
 let g:unite_winheight=10
 let g:unite_source_history_yank_enable=1
+let g:unite_update_time=200
 
 " for neocom
 let g:neocomplcache_enable_at_startup = 1
@@ -468,6 +471,7 @@ augroup Dumpers
     au Filetype perl noremap ,z :call DataDumper()<CR>
     au Filetype javascript noremap ,z o<ESC>p_iconsole.debug(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
     au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
+    au Filetype php noremap ,z o<ESC>p_ivar_dump("<ESC>A=".<ESC>pa);<ESC>
 aug END
 
 if has("autocmd")
