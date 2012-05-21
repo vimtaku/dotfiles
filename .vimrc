@@ -83,6 +83,7 @@ NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
 NeoBundle "git://github.com/vim-scripts/VimRepress"
 
+
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
   for i in reverse(filter(files, 'filereadable(v:val)'))
@@ -806,4 +807,15 @@ function! SetColumnWidthLimit()
 endfun
 
 au Filetype perl,javascript,vim call SetColumnWidthLimit()
+
+
+
+
+nnoremap [quickrun_phpunit] :execute("QuickRun phpunit -runmode async:vimproc:40 -exec '%c %%'")<CR>
+augroup QuickRunPhpUnit
+  autocmd!
+  autocmd Filetype php nmap ,t [quickrun_phpunit]
+augroup END
+
+"!phpunit Tests_Util_Date %
 
