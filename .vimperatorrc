@@ -1,0 +1,46 @@
+
+" 移動量
+noremap j 5j
+noremap k 5k
+
+" 履歴戻るとか
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" タブ移動
+noremap <C-p> <C-n>
+noremap <C-n> <C-p>
+
+" コピー
+noremap y :echo 'Yank!'<CR>Y
+noremap <C-c> :echo 'Yank!'<CR>Y
+
+
+" C-jで中心フォーカス
+noremap <C-j> <ESC>
+
+" C-lなにもしない
+noremap <C-l> <nop>
+
+" Firebugのコンソールウィンドウ開閉
+noremap b :js window.Firebug.toggleBar();<CR>
+
+" commandlinemodeではime offスタート
+:style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
+"noremap x :js if(!FirebugContext)Firebug.toggleBar(true);Firebug.Inspector.toggleInspecting(FirebugContext);<CR>
+
+inoremap <C-n> <ESC>
+inoremap <C-p> <ESC>
+inoremap <C-j> <ESC>
+
+nnoremap ,e :source ~/_vimperatorrc<CR>:echo 'reload vimrc!'<CR>
+
+nnoremap ,pod :set encoding=EUC-JP<CR>
+
+"autocmd PageLoad .*format=pod js (function(){ var hoge = liberator.execute(':set encoding?'); alert(hoge); })();
+
+" debugのときに役立つかも？
+set! javascript.options.strict=true
+set! javascript.options.showInConsole=true
+set! browser.dom.window.dump.enabled=true
