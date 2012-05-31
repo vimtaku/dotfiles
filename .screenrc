@@ -13,3 +13,5 @@ termcapinfo xterm* ti@:te@
 terminfo xterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 defscrollback 20000
 
+bindkey ˙ prev
+bindkey ¬ next

@@ -1,6 +1,8 @@
 [user]
     email = vimtaku@gmail.com
     name = vimtaku
+[core]
+    editor = vim
 
 [alias]
     b = branch

@@ -96,7 +96,7 @@ call <SID>vimrc_local($HOME)
 
 
 filetype plugin indent on
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 
 "Load settings for each location.
 augroup vimrc-local
