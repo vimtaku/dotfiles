@@ -3,6 +3,10 @@
 noremap j 5j
 noremap k 5k
 
+inoremap <C-h> <BS>
+nnoremap <C-h> <BS>
+cnoremap <C-h> <BS>
+
 " 履歴戻るとか
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
