@@ -1,0 +1,8 @@
+
+
+imap <C-j> <ESC>
+nmap _ 0
+nmap <CR> :w<CR>
+imap <C-n>
+
+nmap = i
