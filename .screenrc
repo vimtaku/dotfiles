@@ -1,0 +1,23 @@
+
+escape o
+
+hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+
+vbell off
+
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+
+termcapinfo xterm* ti@:te@
+terminfo xterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+defscrollback 20000
+
+
+bindkey ˙ prev
+bindkey ¬ next
+
+bindkey Ó prev
+bindkey Ò next
+
+

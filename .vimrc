@@ -83,6 +83,9 @@ NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
 NeoBundle "git://github.com/vim-scripts/VimRepress"
 
+NeoBundle 'git://github.com/fuenor/qfixhowm'
+
+
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
   for i in reverse(filter(files, 'filereadable(v:val)'))
@@ -95,7 +98,7 @@ call <SID>vimrc_local($HOME)
 
 
 filetype plugin indent on
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 
 "Load settings for each location.
 augroup vimrc-local
@@ -116,6 +119,7 @@ set expandtab
 
 set cinkeys-=0#
 set cindent
+set smartindent
 
 " when use . command, repeat yank.
 set cpoptions+=y
@@ -307,6 +311,7 @@ noremap ,ev :e ~/.vimrc<CR>
 noremap ,re :source ~/.vimrc<CR>:echo 'reload .vimrc!!'<CR>
 noremap ,v :r! cat -<CR>
 
+
 nnoremap : q:a
 nnoremap / q/a
 nnoremap <silent> <BS> :<C-u>noh<CR>
@@ -362,6 +367,7 @@ nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '
 " for unite window height
 let g:unite_winheight=10
 let g:unite_source_history_yank_enable=1
+let g:unite_update_time=200
 
 " for neocom
 let g:neocomplcache_enable_at_startup = 1
@@ -495,6 +501,7 @@ augroup Dumpers
     au Filetype javascript noremap ,z o<ESC>p_iconsole.log(<ESC>A);<ESC>yypkf(a'<ESC>$F)ha='<ESC>=j
     au Filetype coffee noremap ,z o<ESC>p_iconsole.log<Space><ESC>A<ESC>yypkf<Space>a'<ESC>A='<ESC>=j
     au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
+    au Filetype php noremap ,z o<ESC>p_ivar_dump("<ESC>A=".<ESC>pa);<ESC>
 aug END
 
 if has("autocmd")
@@ -802,4 +809,15 @@ function! SetColumnWidthLimit()
 endfun
 
 au Filetype perl,javascript,vim call SetColumnWidthLimit()
+
+
+
+
+nnoremap [quickrun_phpunit] :execute("QuickRun phpunit -runmode async:vimproc:40 -exec '%c %%'")<CR>
+augroup QuickRunPhpUnit
+  autocmd!
+  autocmd Filetype php nmap ,t [quickrun_phpunit]
+augroup END
+
+"!phpunit Tests_Util_Date %
 
