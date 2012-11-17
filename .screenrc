@@ -20,4 +20,4 @@ bindkey ¬ next
 bindkey Ó prev
 bindkey Ò next
 
-
+startup_message off
