@@ -62,6 +62,7 @@ NeoBundle 'vimtaku/vim-textobj-sigil.git'
 NeoBundle 'vimtaku/vim-textobj-keyvalue.git'
 NeoBundle 'vimtaku/vim-mlh.git'
 NeoBundle 'vimtaku/textobj-wiw.git'
+NeoBundle 'vimtaku/hl_matchit.vim.git'
 NeoBundle 'vimtaku/mixi-graph-api.git'
 NeoBundle 'ynkdir/vim-funlib'
 NeoBundle 'choplin/unite-vim_hacks'
@@ -84,6 +85,9 @@ NeoBundle 'git://github.com/wavded/vim-stylus.git'
 NeoBundle "git://github.com/vim-scripts/VimRepress"
 
 NeoBundle 'git://github.com/fuenor/qfixhowm'
+
+
+NeoBundle 'vimtaku/vim-operator-ppd'
 
 
 function! s:vimrc_local(loc)
@@ -820,4 +824,79 @@ augroup QuickRunPhpUnit
 augroup END
 
 "!phpunit Tests_Util_Date %
+
+
+" for operator ppd
+map zp <Plug>(operator-ppd)
+
+" function! GetOccurances(text, search)
+"     let i = 0
+"     let c = 0
+"     while (1)
+"         let idx = match(a:text, a:search, i)
+"         if idx < 0
+"            break
+"         endif
+"         let i = idx + 1
+"         let c = c+1
+"     endwhile
+"     return c
+" endfun
+" 
+" function! ToList(text, times)
+"     let i = 0
+"     let list = []
+"     while i < a:times
+"        call add(list, a:text)
+"        let i = i+1
+"     endwhile
+"     return list
+" endfun
+" 
+" function! Times(text, times)
+"     return join(ToList(a:text, a:times), '')
+" endfunction
+" 
+" function GetTemplated(text)
+"     let s:setting = {
+"     \ 'perl' : {
+"     \   'template': join(
+"     \    [ "use Data::Dumper;\n"
+"     \    . "warn 'XXX DEBUG [". bufname('')."] L". getpos(".")[1] . " %s is below.';" . "\n"
+"     \    . 'warn Dumper \\%s ;' . "\n"
+"     \    ], ""),
+"     \ }
+"     \}
+"     let template = s:setting['perl']['template']
+"     let placeholder_count = GetOccurances(template, '%s ')
+"     let printf_args = Times('a:text,', placeholder_count)[0:-2]
+"     execute "let ret = printf(template, " . printf_args . ")"
+"     return ret
+" endfunction
+" 
+" 
+" function! OperatorVoidChange(motion_wise)
+"     let v = operator#user#visual_command_from_wise_name(a:motion_wise)
+"     let tmp_reg = @"
+"     try
+"         execute 'normal!' '`[' . v . '`]""y'
+"         let text = @"
+"         let templated_text = GetTemplated(text)
+"         put =[expand(templated_text)]
+"     finally
+"         let @" = tmp_reg
+"         if has('x11')
+"             let @* = tmp_reg
+"         endif
+"     endtry
+" endfunction
+" call operator#user#define('void-change', 'OperatorVoidChange')
+" 
+" map E <Plug>(operator-void-change)
+
+
+"" for hl_matchit
+let g:hl_matchit_enable_on_vim_startup = 1
+
+
 
