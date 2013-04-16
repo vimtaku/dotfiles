@@ -6,3 +6,6 @@ nmap <CR> :w<CR>
 imap <C-n>
 
 nmap = i
+
+nmap <C-j> <C-d>
+nmap <C-k> <C-u>
