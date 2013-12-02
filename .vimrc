@@ -79,7 +79,6 @@ NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
-NeoBundle 'git://github.com/ujihisa/shadow.vim.git'
 
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
 NeoBundle "git://github.com/vim-scripts/VimRepress"
