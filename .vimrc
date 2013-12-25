@@ -3,19 +3,30 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.bundle/neobundle.vim
-call neobundle#rc('~/.bundle')
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
 
+filetype plugin indent on
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
 
 let g:skk_control_j_key = ""
 let g:skk_large_jisyo = "$HOME/local/dict/SKK-JISYO.L"
-
 
 """ let Vundle manage Vundle {{{2
 
 NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
 NeoBundle 'git://github.com/digitaltoad/vim-jade.git'
-"NeoBundle 'git://github.com/Shougo/clang_complete.git'
 NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'Lokaltog/vim-easymotion.git'
 NeoBundle 'Shougo/neocomplcache.git'
@@ -79,14 +90,11 @@ NeoBundle 'tyru/skk.vim.git'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'git://github.com/kchmck/vim-coffee-script.git'
-
 NeoBundle 'git://github.com/wavded/vim-stylus.git'
 NeoBundle "git://github.com/vim-scripts/VimRepress"
-
 NeoBundle 'git://github.com/fuenor/qfixhowm'
-
-
 NeoBundle 'vimtaku/vim-operator-ppd'
+NeoBundle "osyo-manga/unite-qfixhowm"
 
 
 function! s:vimrc_local(loc)
@@ -96,12 +104,6 @@ function! s:vimrc_local(loc)
   endfor
 endfunction
 call <SID>vimrc_local($HOME)
-
-
-
-
-filetype plugin indent on
-"call pathogen#runtime_append_all_bundles()
 
 "Load settings for each location.
 augroup vimrc-local
@@ -351,7 +353,6 @@ nmap ,u [unite]
 nnoremap [unite]e  :<C-u>Unite file_rec file/new<CR>
 nnoremap [unite]w  :<C-u>UniteWithBufferDir file file/new file_rec<CR>
 nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file/new file_rec<CR>
-nnoremap [unite]l  :<C-u>Unite line<CR>
 nnoremap [unite]f  :<C-u>Unite file file/new<CR>
 nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
 nnoremap [unite]B  :<C-u>Unite bookmark file file/new<CR>
@@ -364,6 +365,8 @@ nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
 nnoremap [unite]md :<C-u>Unite directory_mru<CR>
 
 nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '<CR>'
+
+nnoremap [unite]l  :<C-u>Unite qfixhowm<CR>
 
 
 
@@ -897,7 +900,8 @@ map zp <Plug>(operator-ppd)
 "" for hl_matchit
 let g:hl_matchit_enable_on_vim_startup = 1
 let g:hl_matchit_speed_level = 1
-let g:hl_matchit_allow_ft_regexp = 'html\|vim'
+let g:hl_matchit_allow_ft = 'html,vim,ruby'
+
 
 
 
