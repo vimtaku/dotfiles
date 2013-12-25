@@ -210,6 +210,7 @@ alias php	'nocorrect php'
 alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
+alias tailf="tail -f"
 
 
 
@@ -220,4 +221,4 @@ function rm() { command rm -i "$@" }
 
 export GOARCH="amd64"
 
-
+export PATH=/usr/local/bin:$PATH
