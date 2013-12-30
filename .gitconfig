@@ -10,5 +10,5 @@
     di = diff
     co = checkout
     ci = commit
-[core]
-    editor = vim
+[color]
+    ui = true
