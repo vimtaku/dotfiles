@@ -221,3 +221,25 @@ function rm() { command rm -i "$@" }
 export GOARCH="amd64"
 
 
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/pear/bin:$PATH
+
+
+
+
+## add ndk root
+NDK_ROOT="/usr/local/android-ndk-r8e"
+PATH=$PATH:$NDK_ROOT
+export NDK_ROOT=$NDK_ROOT
+
+## android sdk root
+ANDROID_SDK_ROOT="/usr/local/android-sdk/"
+PATH=$PATH:"$ANDROID_SDK_ROOT/tools":"$ANDROID_SDK_ROOT/platform-tools"
+
+
+export PATH="/Users/mac/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
+
+# eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/shims:$PATH"
+

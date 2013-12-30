@@ -90,6 +90,11 @@ NeoBundle 'git://github.com/fuenor/qfixhowm'
 NeoBundle 'vimtaku/vim-operator-ppd'
 
 
+NeoBundle 'vim-scripts/catn.vim.git'
+
+NeoBundle 'kannokanno/previm.git'
+
+
 function! s:vimrc_local(loc)
   let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
   for i in reverse(filter(files, 'filereadable(v:val)'))
@@ -336,8 +341,8 @@ nnoremap <C-h> :noh<CR>
 map R <Plug>(operator-replace)
 
 
-" ref.vim
-let g:ref_perldoc_complete_head = 1
+" " ref.vim
+" let g:ref_perldoc_complete_head = 1
 
 " for surround.vim
 nmap s <Plug>Ysurround
@@ -506,6 +511,8 @@ augroup Dumpers
     au Filetype coffee noremap ,z o<ESC>p_iconsole.log<Space><ESC>A<ESC>yypkf<Space>a'<ESC>A='<ESC>=j
     au Filetype c noremap ,z o<ESC>p_iprintf("<ESC>A\n");<ESC>==;
     au Filetype php noremap ,z o<ESC>p_ivar_dump("<ESC>A=".<ESC>pa);<ESC>
+    au Filetype cs noremap ,z o<ESC>p_iDebug.Log("<ESC>A");<ESC>yypf"xf"x
+
 aug END
 
 if has("autocmd")
@@ -901,4 +908,12 @@ let g:hl_matchit_speed_level = 1
 let g:hl_matchit_allow_ft_regexp = 'html\|vim'
 
 
+augroup Cssuffix
+    autocmd!
+    autocmd Filetype cs :set suffixesadd+=.cs
+    autocmd Filetype cs :set dictionary=~/dict/unity-script-dictionalization/dict
+augroup END
 
+
+
+let g:previm_open_cmd = "open -a Firefox"
