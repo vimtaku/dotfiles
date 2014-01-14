@@ -20,8 +20,6 @@ noremap y :echo 'Yank!'<CR>Y
 noremap <C-c> :echo 'Yank!'<CR>Y
 
 
-" C-jで中心フォーカス
-noremap <C-j> <ESC>
 
 " C-lなにもしない
 noremap <C-l> <nop>
@@ -48,3 +46,7 @@ nnoremap ,pod :set encoding=EUC-JP<CR>
 set! javascript.options.strict=true
 set! javascript.options.showInConsole=true
 set! browser.dom.window.dump.enabled=true
+
+
+noremap <C-j> 5j
+noremap <C-k> 5k

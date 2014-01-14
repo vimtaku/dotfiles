@@ -97,9 +97,12 @@ NeoBundle 'vimtaku/vim-operator-ppd'
 NeoBundle "osyo-manga/unite-qfixhowm"
 
 
-NeoBundle 'vim-scripts/catn.vim.git'
-
-NeoBundle 'kannokanno/previm.git'
+"
+"
+" NeoBundle 'vim-scripts/catn.vim.git'
+"
+" NeoBundle 'kannokanno/previm.git'
+"NeoBundle 'itchyny/calendar.vim.git'
 
 
 function! s:vimrc_local(loc)
@@ -920,3 +923,12 @@ augroup END
 
 
 let g:previm_open_cmd = "open -a Firefox"
+
+
+augroup WriteRuby
+    autocmd!
+    au Filetype ruby :set tabstop=2
+    au Filetype ruby :set shiftwidth=2
+augroup END
+
+

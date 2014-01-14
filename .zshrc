@@ -211,6 +211,9 @@ alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
 alias tailf="tail -f"
+alias bupdate="bundle update"
+alias bunstall="bundle install"
+alias bec="bundle exec"
 
 
 
@@ -221,12 +224,8 @@ function rm() { command rm -i "$@" }
 
 export GOARCH="amd64"
 
-<<<<<<< HEAD
-
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=$HOME/pear/bin:$PATH
-
-
 
 
 ## add ndk root
@@ -246,3 +245,6 @@ eval "$(phpenv init -)"
 # export PATH="$HOME/.rbenv/shims:$PATH"
 
 export PATH=/usr/local/bin:$PATH
+
+export PATH=$PATH:/usr/local/share/python
+
