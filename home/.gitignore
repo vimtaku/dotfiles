@@ -5,4 +5,5 @@
 m_*
 .vim/bundle/*
 .vim/cache/*
+!home/.gitconfig
 .gitconfig
