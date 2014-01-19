@@ -6,4 +6,4 @@ m_*
 .vim/bundle/*
 .vim/cache/*
 .gitconfig
-!home/.gitconfig
+!.gitconfig
