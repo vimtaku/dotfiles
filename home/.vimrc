@@ -742,8 +742,8 @@ command! FencUtf8 :set fenc=utf8<CR>
 command! FencEUC :set fenc=euc-jp<CR>
 command! FencCp932 :set fenc=cp932<CR>
 
-command! DeleteAlert :g/alert(/d
-command! DeleteConsole :g/console.\(log\|debug\)/d
+" command! DeleteAlert :g/alert(/d
+" command! DeleteConsole :g/console.\(log\|debug\)/d
 
 function! SetColumnWidthLimit()
   setlocal textwidth=78
@@ -753,3 +753,9 @@ function! SetColumnWidthLimit()
 endfun
 
 au Filetype perl,javascript,vim,ruby call SetColumnWidthLimit()
+
+augroup WriteRuby
+  autocmd!
+  au Filetype ruby setlocal tabstop=2
+  au Filetype ruby setlocal shiftwidth=2
+augroup END
