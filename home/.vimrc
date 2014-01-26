@@ -4,6 +4,7 @@ set encoding=utf8
 scriptencoding utf8
 set fileencodings=utf8,cp932,iso-2022-jp,euc-jp,default,latin
 
+
 let s:neobundle_dir = expand('~/.vim/.bundle')
 if has('vim_starting') "{{{
   " Load neobundle.
@@ -759,3 +760,11 @@ augroup WriteRuby
   au Filetype ruby setlocal tabstop=2
   au Filetype ruby setlocal shiftwidth=2
 augroup END
+
+" カーソル行を強調表示しない
+" 挿入モードの時のみ、カーソル行をハイライトする
+autocmd InsertEnter * set cursorline!
+autocmd InsertLeave * set nocursorline
+" lazy load を呼び出してしまわないとハイライトされないので実行
+doautocmd InsertEnter
+doautocmd InsertLeave
