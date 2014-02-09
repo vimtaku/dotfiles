@@ -75,6 +75,11 @@ NeoBundleLazy 'tpope/vim-endwise'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
 
+NeoBundle 'gist:hail2u/747628', {
+       \ 'name': 'markdown-cheat-sheet.jax',
+       \ 'script_type': 'doc'}
+
+
 "" }}}
 
 if neobundle#tap('vimproc') " {{{
