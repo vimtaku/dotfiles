@@ -343,6 +343,11 @@ if neobundle#tap('quickrun') "{{{
         \ 'autoload' : {
         \ 'mappings': ['<Plug>(quickrun)']
         \ }})
+    let g:quickrun_config = {}
+    let g:quickrun_config['javascript'] = {
+          \ 'command': 'node',
+          \ 'tempfile': '%{tempname()}.js'
+          \ }
     silent! nmap ,r <Plug>(quickrun)
 end "}}}
 
@@ -621,6 +626,7 @@ nnoremap <CR> :<C-u>w<CR>
 
 nnoremap q :<C-u>q<CR>
 nnoremap Q q
+nnoremap T :tabe<CR>
 
 nnoremap : q:a
 nnoremap / q/a
@@ -760,3 +766,5 @@ augroup WriteRuby
   au Filetype ruby setlocal tabstop=2
   au Filetype ruby setlocal shiftwidth=2
 augroup END
+
+
