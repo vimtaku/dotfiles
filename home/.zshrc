@@ -214,6 +214,8 @@ alias tailf="tail -f"
 alias bu="bundle update"
 alias bi="bundle install"
 alias be="bundle exec"
+alias v="vim"
+alias g="git"
 
 
 
