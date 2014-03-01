@@ -211,9 +211,9 @@ alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
 alias tailf="tail -f"
-alias bupdate="bundle update"
-alias bunstall="bundle install"
-alias bec="bundle exec"
+alias bu="bundle update"
+alias bi="bundle install"
+alias be="bundle exec"
 
 
 

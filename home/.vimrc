@@ -775,3 +775,26 @@ autocmd InsertLeave * set nocursorline
 " lazy load を呼び出してしまわないとハイライトされないので実行
 doautocmd InsertEnter
 doautocmd InsertLeave
+
+
+
+noremap ,trim :call RTrim()<CR>:echo 'trim space!'<CR>
+function! RTrim()
+    let s:cursor = getpos(".")
+    %s/\s\+$//e
+    call setpos(".", s:cursor)
+endfunction
+
+" multibyte space highlighting.
+function! JISX0208SpaceHilight()
+    syntax match JISX0208Space "　" display containedin=ALL
+    highlight JISX0208Space term=underline ctermbg=LightCyan
+endf
+
+" syntaxの有無をチェックし、新規バッファと新規読み込み時にハイライトさせる
+if has("syntax")
+    augroup invisible
+        autocmd! invisible
+        autocmd BufNew,BufRead * call JISX0208SpaceHilight()
+    augroup END
+endif
