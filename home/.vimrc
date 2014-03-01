@@ -79,6 +79,8 @@ NeoBundle 'gist:hail2u/747628', {
        \ 'name': 'markdown-cheat-sheet.jax',
        \ 'script_type': 'doc'}
 
+NeoBundle 'mattn/httpstatus-vim'
+
 
 "" }}}
 
