@@ -80,6 +80,8 @@ NeoBundle 'gist:hail2u/747628', {
        \ 'script_type': 'doc'}
 
 NeoBundle 'mattn/httpstatus-vim'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 
 "" }}}
