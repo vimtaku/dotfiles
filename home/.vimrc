@@ -350,6 +350,11 @@ if neobundle#tap('quickrun') "{{{
         \ 'autoload' : {
         \ 'mappings': ['<Plug>(quickrun)']
         \ }})
+    let g:quickrun_config = {}
+    let g:quickrun_config['javascript'] = {
+          \ 'command': 'node',
+          \ 'tempfile': '%{tempname()}.js'
+          \ }
     silent! nmap ,r <Plug>(quickrun)
 end "}}}
 
@@ -573,6 +578,7 @@ if neobundle#tap('unite-rails') " {{{
     nnoremap [unite_rails]v :<C-U>Unite rails/view<CR>
     nnoremap [unite_rails]m :<C-U>Unite rails/model<CR>
     nnoremap [unite_rails]c :<C-U>Unite rails/controller<CR>
+    nnoremap [unite_rails]s :<C-U>Unite rails/spec<CR>
     nnoremap [unite_rails]g :<C-U>Unite rails/bundled_gem<CR>
     nnoremap [unite_rails]a :<C-U>Unite rails/view rails/model rails/controller<CR>
 endif "}}}
@@ -628,6 +634,7 @@ nnoremap <CR> :<C-u>w<CR>
 
 nnoremap q :<C-u>q<CR>
 nnoremap Q q
+nnoremap T :tabe<CR>
 
 nnoremap : q:a
 nnoremap / q/a
