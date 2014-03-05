@@ -37,6 +37,7 @@ else
 NeoBundleLazy 'Shougo/neocomplcache', {'autoload': {'insert': 1}}
 end
 
+NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
