@@ -124,6 +124,12 @@ if neobundle#tap('unite.vim') " {{{
     nnoremap [unite]gs :<C-u>Unite giti/status<CR>
     nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
 
+
+    autocmd FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()"{{{
+        nmap <buffer> <Tab> <Plug>(unite_choose_action)<Plug>(unite_insert_enter)
+        imap <buffer> <Tab> <Plug>(unite_choose_action)<Plug>(unite_insert_enter)
+    endfunction"}}}
 endif " }}}
 
 
