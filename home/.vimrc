@@ -48,10 +48,12 @@ NeoBundle 'adie/BlockDiff'
 NeoBundleLazy 'h1mesuke/vim-alignta'
 NeoBundleLazy 'kana/vim-operator-user'
 NeoBundleLazy 'kana/vim-operator-replace'
+NeoBundleLazy 'vimtaku/vim-operator-mdurl'
 
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'thinca/vim-textobj-between'
+NeoBundle 'mattn/vim-textobj-url'
 
 NeoBundleLazy 'tpope/vim-repeat'
 NeoBundleLazy 'tpope/vim-surround'
@@ -326,6 +328,12 @@ endif "}}}
 if neobundle#tap('vim-operator-replace') "{{{
     call neobundle#config({'depends': 'vim-operator-user', 'autoload': {'mappings': ['<Plug>(operator-replace)']}})
     map R <Plug>(operator-replace)
+end "}}}
+if neobundle#tap('vim-operator-mdurl') "{{{
+    call neobundle#config({'depends': 'vim-operator-user',
+                \ 'autoload': {'mappings': ['<Plug>(operator-mdurl)', '<Plug>(operator-mdurlp)']}})
+    map L <Plug>(operator-mdurl)
+    map M <Plug>(operator-mdurlp)
 end "}}}
 
 if neobundle#tap('vim-surround') "{{{
@@ -816,3 +824,13 @@ if has("syntax")
         autocmd BufNew,BufRead * call JISX0208SpaceHilight()
     augroup END
 endif
+
+xmap ah  <Plug>(textobj-url-a)
+omap ah  <Plug>(textobj-url-a)
+xmap ih  <Plug>(textobj-url-i)
+omap ih  <Plug>(textobj-url-i)
+
+xmap au  <Plug>(textobj-wiw-a)
+omap au  <Plug>(textobj-wiw-a)
+xmap iu  <Plug>(textobj-wiw-i)
+omap iu  <Plug>(textobj-wiw-i)
