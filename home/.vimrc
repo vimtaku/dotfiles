@@ -86,6 +86,11 @@ NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 
+NeoBundleLazy 'thoughtbot/vim-rspec', {
+                \ 'depends'  : 'tpope/vim-dispatch',
+                \ 'autoload' : { 'filetypes' : ['ruby'] }
+              \ }
+
 
 "" }}}
 
@@ -369,6 +374,17 @@ if neobundle#tap('quickrun') "{{{
           \ 'command': 'node',
           \ 'tempfile': '%{tempname()}.js'
           \ }
+
+
+    augroup AddFileType
+        autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+    augroup END
+
+    " quickrunの設定
+    let g:quickrun_config = {}
+    let g:quickrun_config['*'] = {'runmode': "async:vimproc"}
+    let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %s %a']}
+
     silent! nmap ,r <Plug>(quickrun)
 end "}}}
 
@@ -606,6 +622,18 @@ endif "}}}
 
 if neobundle#tap('vim-ref-ri') " {{{
     nnoremap [vimref_rails]r :<C-U>Unite ref/ri<CR>
+endif "}}}
+
+if neobundle#tap('vim-rspec') "{{{
+    function! neobundle#tapped.hooks.on_source(bundle)
+       let g:rspec_command = 'Dispatch rspec {spec}'
+    endfunction
+
+
+    nmap ,tc :call RunCurrentSpecFile()<CR>
+    nmap ,tn :call RunNearestSpec()<CR>
+    nmap ,tl :call RunLastSpec()<CR>
+    nmap ,ta :call RunAllSpecs()<CR>
 endif "}}}
 
 "}}}
