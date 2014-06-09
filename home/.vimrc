@@ -91,6 +91,9 @@ NeoBundleLazy 'thoughtbot/vim-rspec', {
                 \ 'autoload' : { 'filetypes' : ['ruby'] }
               \ }
 
+NeoBundle 'slim-template/vim-slim'
+NeoBundleLazy 'tyru/operator-camelize.vim'
+
 
 "" }}}
 
@@ -335,6 +338,11 @@ if neobundle#tap('vim-operator-mdurl') "{{{
     map L <Plug>(operator-mdurl)
     map M <Plug>(operator-mdurlp)
 end "}}}
+if neobundle#tap('operator-camelize.vim') "{{{
+    call neobundle#config({'depends': 'vim-operator-user', 'autoload': {'mappings': ['<Plug>(operator-camelize)', '<Plug>(operator-decamelize)']}})
+    map ,c <Plug>(operator-camelize)
+    map ,C <Plug>(operator-decamelize)
+end "}}}
 
 if neobundle#tap('vim-surround') "{{{
   call neobundle#config({
@@ -376,14 +384,11 @@ if neobundle#tap('quickrun') "{{{
           \ }
 
 
-    augroup AddFileType
-        autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
-    augroup END
-
     " quickrunの設定
     let g:quickrun_config = {}
-    let g:quickrun_config['*'] = {'runmode': "async:vimproc"}
-    let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %s %a']}
+    "let g:quickrun_config['*'] = {'runmode': "async:vimproc"}
+    "let g:quickrun_config['ruby'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %s %a']}
+
 
     silent! nmap ,r <Plug>(quickrun)
 end "}}}
@@ -609,6 +614,7 @@ if neobundle#tap('unite-rails') " {{{
     nnoremap [unite_rails]m :<C-U>Unite rails/model<CR>
     nnoremap [unite_rails]c :<C-U>Unite rails/controller<CR>
     nnoremap [unite_rails]s :<C-U>Unite rails/spec<CR>
+    nnoremap <expr> [unite_rails]S ':<C-u>Unite file file/new -input=' . 'spec/'. expand('%:h'). '/'. substitute(expand('%:t'), ".rb", "_spec.rb", "") . '<CR>'
     nnoremap [unite_rails]g :<C-U>Unite rails/bundled_gem<CR>
     nnoremap [unite_rails]a :<C-U>Unite rails/view rails/model rails/controller<CR>
 endif "}}}
@@ -857,3 +863,10 @@ xmap au  <Plug>(textobj-wiw-a)
 omap au  <Plug>(textobj-wiw-a)
 xmap iu  <Plug>(textobj-wiw-i)
 omap iu  <Plug>(textobj-wiw-i)
+
+
+nmap ,s :!screen -S 2770.rspec -X stuff 'c %'`echo -ne '\015'`<CR>
+
+
+
+
