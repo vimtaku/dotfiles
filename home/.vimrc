@@ -93,6 +93,7 @@ NeoBundleLazy 'thoughtbot/vim-rspec', {
 
 NeoBundle 'slim-template/vim-slim'
 NeoBundleLazy 'tyru/operator-camelize.vim'
+NeoBundle 'kchmck/vim-coffee-script'
 
 
 "" }}}
@@ -819,8 +820,8 @@ au Filetype perl,javascript,vim,ruby call SetColumnWidthLimit()
 
 augroup WriteRuby
   autocmd!
-  au Filetype ruby setlocal tabstop=2
-  au Filetype ruby setlocal shiftwidth=2
+  au Filetype ruby,scss setlocal tabstop=2
+  au Filetype ruby,scss setlocal shiftwidth=2
 augroup END
 
 " カーソル行を強調表示しない
@@ -865,7 +866,7 @@ xmap iu  <Plug>(textobj-wiw-i)
 omap iu  <Plug>(textobj-wiw-i)
 
 
-nmap ,s :!screen -S 2770.rspec -X stuff 'c %'`echo -ne '\015'`<CR>
+nmap ,s :!screen -S 94317.2770.rspec -X stuff 'c %'`echo -ne '\015'`<CR>
 
 
 
