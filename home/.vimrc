@@ -86,6 +86,10 @@ NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 
+" gosh
+NeoBundle 'aharisu/vim_goshrepl'
+NeoBundle 'aharisu/vim-gdev'
+
 
 "" }}}
 
@@ -163,6 +167,7 @@ if neobundle#tap('neocomplete.vim') " {{{
            let g:neocomplete#keyword_patterns = {}
        endif
        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+       let g:neocomplete#keyword_patterns['gosh-repl'] = "[[:alpha:]+*/@$_=.!?-][[:alnum:]+*/@$_:=.!?-]*"
 
        " Plugin key-mappings.
        inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -834,3 +839,15 @@ xmap au  <Plug>(textobj-wiw-a)
 omap au  <Plug>(textobj-wiw-a)
 xmap iu  <Plug>(textobj-wiw-i)
 omap iu  <Plug>(textobj-wiw-i)
+
+
+inoremap <C-a> <ESC>_i
+nnoremap <C-a> _
+inoremap <C-e> <ESC>A
+nnoremap <C-e> $
+nnoremap <C-b> <Left>
+inoremap <C-b> <Left>
+nnoremap <C-f> <Right>
+inoremap <C-f> <Right>
+
+

@@ -216,6 +216,7 @@ alias bi="bundle install"
 alias be="bundle exec"
 alias v="vim"
 alias g="git"
+alias gosh="rlwrap gosh"
 
 
 
