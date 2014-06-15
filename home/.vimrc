@@ -85,7 +85,6 @@ NeoBundle 'gist:hail2u/747628', {
 NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
-
 " gosh
 NeoBundle 'aharisu/vim_goshrepl'
 NeoBundle 'aharisu/vim-gdev'
@@ -94,6 +93,14 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'osyo-manga/vim-textobj-blockwise'
 NeoBundle 'osyo-manga/vim-operator-blockwise'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundleLazy 'thoughtbot/vim-rspec', {
+                \ 'depends'  : 'tpope/vim-dispatch',
+                \ 'autoload' : { 'filetypes' : ['ruby'] }
+              \ }
+
+NeoBundle 'slim-template/vim-slim'
+NeoBundleLazy 'tyru/operator-camelize.vim'
+NeoBundle 'kchmck/vim-coffee-script'
 
 
 "" }}}
@@ -135,12 +142,7 @@ if neobundle#tap('unite.vim') " {{{
     nnoremap [unite]gs :<C-u>Unite giti/status<CR>
     nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
 
-
-    autocmd FileType unite call s:unite_my_settings()
-    function! s:unite_my_settings()"{{{
-        nmap <buffer> <Tab> <Plug>(unite_choose_action)<Plug>(unite_insert_enter)
-        imap <buffer> <Tab> <Plug>(unite_choose_action)<Plug>(unite_insert_enter)
-    endfunction"}}}
+    call unite#custom#profile('action', 'context', {'start_insert' : 1})
 endif " }}}
 
 
@@ -345,6 +347,11 @@ if neobundle#tap('vim-operator-mdurl') "{{{
     map L <Plug>(operator-mdurl)
     map M <Plug>(operator-mdurlp)
 end "}}}
+if neobundle#tap('operator-camelize.vim') "{{{
+    call neobundle#config({'depends': 'vim-operator-user', 'autoload': {'mappings': ['<Plug>(operator-camelize)', '<Plug>(operator-decamelize)']}})
+    map ,c <Plug>(operator-camelize)
+    map ,C <Plug>(operator-decamelize)
+end "}}}
 
 if neobundle#tap('vim-surround') "{{{
   call neobundle#config({
@@ -394,6 +401,14 @@ if neobundle#tap('quickrun') "{{{
           \ 'command': 'node',
           \ 'tempfile': '%{tempname()}.js'
           \ }
+
+
+    " quickrunの設定
+    let g:quickrun_config = {}
+    "let g:quickrun_config['*'] = {'runmode': "async:vimproc"}
+    "let g:quickrun_config['ruby'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %s %a']}
+
+
     silent! nmap ,r <Plug>(quickrun)
 end "}}}
 
@@ -618,6 +633,7 @@ if neobundle#tap('unite-rails') " {{{
     nnoremap [unite_rails]m :<C-U>Unite rails/model<CR>
     nnoremap [unite_rails]c :<C-U>Unite rails/controller<CR>
     nnoremap [unite_rails]s :<C-U>Unite rails/spec<CR>
+    nnoremap <expr> [unite_rails]S ':<C-u>Unite file file/new -input=' . 'spec/'. expand('%:h'). '/'. substitute(expand('%:t'), ".rb", "_spec.rb", "") . '<CR>'
     nnoremap [unite_rails]g :<C-U>Unite rails/bundled_gem<CR>
     nnoremap [unite_rails]a :<C-U>Unite rails/view rails/model rails/controller<CR>
 endif "}}}
@@ -631,6 +647,18 @@ endif "}}}
 
 if neobundle#tap('vim-ref-ri') " {{{
     nnoremap [vimref_rails]r :<C-U>Unite ref/ri<CR>
+endif "}}}
+
+if neobundle#tap('vim-rspec') "{{{
+    function! neobundle#tapped.hooks.on_source(bundle)
+       let g:rspec_command = 'Dispatch rspec {spec}'
+    endfunction
+
+
+    nmap ,tc :call RunCurrentSpecFile()<CR>
+    nmap ,tn :call RunNearestSpec()<CR>
+    nmap ,tl :call RunLastSpec()<CR>
+    nmap ,ta :call RunAllSpecs()<CR>
 endif "}}}
 
 "}}}
@@ -810,8 +838,8 @@ au Filetype perl,javascript,vim,ruby call SetColumnWidthLimit()
 
 augroup WriteRuby
   autocmd!
-  au Filetype ruby setlocal tabstop=2
-  au Filetype ruby setlocal shiftwidth=2
+  au Filetype ruby,scss setlocal tabstop=2
+  au Filetype ruby,scss setlocal shiftwidth=2
 augroup END
 
 " カーソル行を強調表示しない
@@ -864,5 +892,6 @@ nnoremap <C-b> <Left>
 inoremap <C-b> <Left>
 nnoremap <C-f> <Right>
 inoremap <C-f> <Right>
+nmap ,s :!screen -S 94317.2770.rspec -X stuff 'c %'`echo -ne '\015'`<CR>
 
 

@@ -3,6 +3,7 @@
     name = vimtaku
 [core]
     editor = vim
+	excludesfile = /Users/vimtaku/.gitignore_global
 
 [alias]
     b = branch
@@ -12,3 +13,9 @@
     ci = commit
 [color]
     ui = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
