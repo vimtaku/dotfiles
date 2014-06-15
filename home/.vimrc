@@ -90,6 +90,11 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'aharisu/vim_goshrepl'
 NeoBundle 'aharisu/vim-gdev'
 
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'osyo-manga/vim-textobj-blockwise'
+NeoBundle 'osyo-manga/vim-operator-blockwise'
+NeoBundle 'osyo-manga/vim-over'
+
 
 "" }}}
 
@@ -357,6 +362,16 @@ if neobundle#tap('yanktmp.vim') "{{{
     map <silent> sp :call YanktmpPaste_p()<CR>
     map <silent> sP :call YanktmpPaste_P()<CR>
 endif "}}}
+
+
+if neobundle#tap('vim-operator-blockwise') "{{{
+    call neobundle#config({'depends': 'vim-operator-user', 'autoload': {'mappings': ['<Plug>(operator-blockwise*']}})
+    nmap YY <Plug>(operator-blockwise-yank-head)
+    nmap DD <Plug>(operator-blockwise-delete-head)
+    nmap CC <Plug>(operator-blockwise-change-head)
+endif "}}}
+
+
 
 
 if neobundle#tap('vim-mlh') "{{{
