@@ -25,7 +25,9 @@ endif
 "}}}
 
 let g:neobundle#install_process_timeout = 2000
-call neobundle#rc(s:neobundle_dir)
+
+
+call neobundle#begin(expand('~/.vim/.bundle'))
 
 "" NeoBundleLine {{{
 
@@ -67,7 +69,7 @@ NeoBundle 'tyru/skk.vim'
 NeoBundleLazy 'vimtaku/vim-mlh'
 NeoBundle 'vimtaku/textobj-wiw.git'
 NeoBundle 'vimtaku/hl_matchit.vim'
-NeoBundleLazy 'ujihisa/quickrun'
+NeoBundle 'thinca/vim-quickrun.git'
 NeoBundleLazy 'vim-scripts/JavaScript-Indent'
 NeoBundle 'fuenor/qfixhowm'
 
@@ -91,7 +93,7 @@ NeoBundle 'aharisu/vim-gdev'
 
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'osyo-manga/vim-textobj-blockwise'
-NeoBundle 'osyo-manga/vim-operator-blockwise'
+" NeoBundle 'osyo-manga/vim-operator-blockwise'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundleLazy 'thoughtbot/vim-rspec', {
                 \ 'depends'  : 'tpope/vim-dispatch',
@@ -102,8 +104,15 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundleLazy 'tyru/operator-camelize.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 
+"NeoBundle 'gcmt/wildfire.vim.git'
+
+NeoBundle "osyo-manga/shabadou.vim"
+NeoBundle "osyo-manga/vim-watchdogs"
+NeoBundle "jceb/vim-hier"
 
 "" }}}
+call neobundle#end()
+
 
 if neobundle#tap('vimproc') " {{{
   call neobundle#config({'build':
@@ -391,7 +400,7 @@ if neobundle#tap('vim-mlh') "{{{
     nmap <C-b> <Plug>(vim_mlh-retransliterate)<C-n>
 end "}}}
 
-if neobundle#tap('quickrun') "{{{
+if neobundle#tap('vim-quickrun') "{{{
     call neobundle#config({
         \ 'autoload' : {
         \ 'mappings': ['<Plug>(quickrun)']
@@ -404,9 +413,13 @@ if neobundle#tap('quickrun') "{{{
 
 
     " quickrunの設定
-    let g:quickrun_config = {}
+    "let g:quickrun_config = {}
     "let g:quickrun_config['*'] = {'runmode': "async:vimproc"}
     "let g:quickrun_config['ruby'] = {'command': 'rspec', 'cmdopt': "-l %{line('.')}", 'exec': ['bundle exec %c %s %a']}
+
+    call watchdogs#setup(g:quickrun_config)
+    let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_CursorHold_enable = 1
 
 
     silent! nmap ,r <Plug>(quickrun)
@@ -836,10 +849,11 @@ endfun
 
 au Filetype perl,javascript,vim,ruby call SetColumnWidthLimit()
 
-augroup WriteRuby
+
+augroup Indent2
   autocmd!
-  au Filetype ruby,scss setlocal tabstop=2
-  au Filetype ruby,scss setlocal shiftwidth=2
+  au Filetype ruby,scss,coffee setlocal tabstop=2
+  au Filetype ruby,scss,coffee setlocal shiftwidth=2
 augroup END
 
 " カーソル行を強調表示しない
@@ -892,6 +906,9 @@ nnoremap <C-b> <Left>
 inoremap <C-b> <Left>
 nnoremap <C-f> <Right>
 inoremap <C-f> <Right>
-nmap ,s :!screen -S 94317.2770.rspec -X stuff 'c %'`echo -ne '\015'`<CR>
 
+nmap ,s :!screen -S 5700.spec -X stuff 'c %'`echo -ne '\015'`<CR>
+
+
+inoremap () ()<LEFT>
 
