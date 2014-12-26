@@ -252,3 +252,5 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/share/python
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export PATH=$PATH:$HOME/.jenv/bin
+source .zsh_profile

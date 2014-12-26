@@ -33,11 +33,7 @@ call neobundle#begin(expand('~/.vim/.bundle'))
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundleLazy 'Shougo/vimproc'
-if has('lua')
 NeoBundle 'Shougo/neocomplete.vim'
-else
-NeoBundleLazy 'Shougo/neocomplcache', {'autoload': {'insert': 1}}
-end
 
 NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'Shougo/unite.vim'
@@ -110,6 +106,9 @@ NeoBundle "osyo-manga/shabadou.vim"
 NeoBundle "osyo-manga/vim-watchdogs"
 NeoBundle "jceb/vim-hier"
 
+NeoBundle 'lambdalisue/unite-grep-vcs'
+NeoBundle 'tpope/vim-fugitive'
+
 "" }}}
 call neobundle#end()
 
@@ -137,9 +136,8 @@ if neobundle#tap('unite.vim') " {{{
     nnoremap [unite] <Nop>
     nmap ,u [unite]
     " Unite mappings
-    nnoremap [unite]e  :<C-u>Unite file_rec file/new<CR>
-    nnoremap [unite]w  :<C-u>UniteWithBufferDir file file/new file_rec<CR>
-    nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file/new file_rec<CR>
+    nnoremap [unite]e  :<C-u>Unite file/new<CR>
+    nnoremap [unite]c  :<C-u>UniteWithCurrentDir file file/new<CR>
     nnoremap [unite]f  :<C-u>Unite file file/new<CR>
     nnoremap [unite]b  :<C-u>Unite tab buffer<CR>
     nnoremap [unite]B  :<C-u>Unite bookmark file file/new<CR>
@@ -147,9 +145,14 @@ if neobundle#tap('unite.vim') " {{{
     nnoremap [unite]o  :<C-u>Unite outline<CR>
     nnoremap [unite]md :<C-u>Unite directory_mru<CR>
     nnoremap [unite]l  :<C-u>Unite qfixhowm<CR>
+    nnoremap [unite]gg  :<C-u>Unite grep/git<CR>
+    nnoremap <expr> [unite]w ':<C-u>UniteWithBufferDir file file/new <CR>'
     nnoremap <expr> [unite]% ':<C-u>Unite file file/new -input=' . expand('%:p') . '<CR>'
     nnoremap [unite]gs :<C-u>Unite giti/status<CR>
     nnoremap [unite]gb :<C-u>Unite giti/branch<CR>
+
+	nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
+	        \ -buffer-name=files -prompt=%\  buffer bookmark file<CR>
 
     call unite#custom#profile('action', 'context', {'start_insert' : 1})
 endif " }}}
@@ -898,8 +901,8 @@ xmap iu  <Plug>(textobj-wiw-i)
 omap iu  <Plug>(textobj-wiw-i)
 
 
-inoremap <C-a> <ESC>_i
-nnoremap <C-a> _
+"inoremap <C-a> <ESC>_i
+" ;nnoremap <C-a> _
 inoremap <C-e> <ESC>A
 nnoremap <C-e> $
 nnoremap <C-b> <Left>
@@ -907,7 +910,7 @@ inoremap <C-b> <Left>
 nnoremap <C-f> <Right>
 inoremap <C-f> <Right>
 
-nmap ,s :!screen -S 5700.spec -X stuff 'c %'`echo -ne '\015'`<CR>
+nmap ,s :!screen -S 27586.spec -X stuff 'c %'`echo -ne '\015'`<CR>
 
 
 inoremap () ()<LEFT>
