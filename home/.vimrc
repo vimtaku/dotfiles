@@ -109,6 +109,9 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle "osyo-manga/shabadou.vim"
 NeoBundle "osyo-manga/vim-watchdogs"
 NeoBundle "jceb/vim-hier"
+NeoBundle "guns/vim-clojure-static"
+NeoBundle "Keithbsmiley/swift.vim.git"
+NeoBundle "amdt/vim-niji.git"
 
 "" }}}
 call neobundle#end()
@@ -299,22 +302,22 @@ if neobundle#tap('vimshell.vim') " {{{
     \| call vimshell#altercmd#define('i', 'iexe')
     \| call vimshell#altercmd#define('l', 'll')
     \| call vimshell#altercmd#define('ll', 'ls -l')
-    \| call vimshell#hook#set('chpwd', ['g:my_chpwd'])
-    \| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
-    \| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
-    \| call vimshell#hook#set('preexec', ['g:my_preexec'])
+    \| call vimshell#hook#set('chpwd', ['g:My_chpwd'])
+    \| call vimshell#hook#set('emptycmd', ['g:My_emptycmd'])
+    \| call vimshell#hook#set('preprompt', ['g:My_preprompt'])
+    \| call vimshell#hook#set('preexec', ['g:My_preexec'])
 
-    function! g:my_chpwd(args, context)
+    function! g:My_chpwd(args, context)
      call vimshell#execute('echo "chpwd"')
     endfunction
-    function! g:my_emptycmd(cmdline, context)
+    function! g:My_emptycmd(cmdline, context)
      call vimshell#execute('echo "emptycmd"')
      return a:cmdline
     endfunction
-    function! g:my_preprompt(args, context)
+    function! g:My_preprompt(args, context)
      call vimshell#execute('echo "preprompt"')
     endfunction
-    function! g:my_preexec(cmdline, context)
+    function! g:My_preexec(cmdline, context)
      call vimshell#execute('echo "preexec"')
 
      let l:args = vimproc#parser#split_args(a:cmdline)
@@ -847,13 +850,13 @@ function! SetColumnWidthLimit()
   endif
 endfun
 
-au Filetype perl,javascript,vim,ruby call SetColumnWidthLimit()
+au Filetype perl,javascript,vim,ruby,clojure call SetColumnWidthLimit()
 
 
 augroup Indent2
   autocmd!
-  au Filetype ruby,scss,coffee setlocal tabstop=2
-  au Filetype ruby,scss,coffee setlocal shiftwidth=2
+  au Filetype clojure,ruby,scss,coffee setlocal tabstop=2
+  au Filetype clojure,ruby,scss,coffee setlocal shiftwidth=2
 augroup END
 
 " カーソル行を強調表示しない
@@ -912,3 +915,8 @@ nmap ,s :!screen -S 5700.spec -X stuff 'c %'`echo -ne '\015'`<CR>
 
 inoremap () ()<LEFT>
 
+
+" Default
+let g:clojure_fuzzy_indent = 1
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^defapi', '^swaggered', '^context', '^GET', '^POST', '^PUT']
+let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']

@@ -244,11 +244,16 @@ PATH=$PATH:"$ANDROID_SDK_ROOT/tools":"$ANDROID_SDK_ROOT/platform-tools"
 export PATH="/Users/mac/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 
-# eval "$(rbenv init -)"
-# export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/shims:$PATH"
 
 export PATH=/usr/local/bin:$PATH
 
 export PATH=$PATH:/usr/local/share/python
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+[ -f ~/.zshrc.include ] && source ~/.zshrc.include # 設定ファイルのinclude
