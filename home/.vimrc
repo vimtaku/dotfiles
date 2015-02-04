@@ -112,6 +112,9 @@ NeoBundle "amdt/vim-niji.git"
 NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'tpope/vim-fugitive'
 
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'todesking/vim-textobj-methodcall.git'
+
 "" }}}
 call neobundle#end()
 
