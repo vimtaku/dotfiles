@@ -1,0 +1,14 @@
+
+inoremap <C-j> <ESC>
+cnoremap <C-j> <ESC>
+
+noremap <C-k> <C-u>
+noremap <C-j> <C-d>
+
+nnoremap j gj
+nnoremap k gk
+
+nnoremap <C-p> gt
+nnoremap <C-n> gT
+
+nmap <CR> :w<CR>

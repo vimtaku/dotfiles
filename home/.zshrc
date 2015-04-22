@@ -253,10 +253,14 @@ export PATH=$PATH:/usr/local/share/python
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 [ -f ~/.zshrc.include ] && source ~/.zshrc.include # 設定ファイルのinclude
 
-export PATH=$PATH:$HOME/.jenv/bin
-source .zsh_profile
+# export PATH=$PATH:$HOME/.jenv/bin
+# source .zsh_profile
+

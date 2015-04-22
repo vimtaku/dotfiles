@@ -445,6 +445,7 @@ if neobundle#tap('qfixhowm') "{{{
     let QFixHowm_Key      = 'g'
     let howm_dir          = $HOME . '/Dropbox/howm'
     let QFixHowm_RootDir  = $HOME . '/Dropbox/howm'
+    let QFixHowm_FileType = 'md'
     let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
     let howm_fileencoding = 'utf8'
     let howm_fileformat   = 'unix'
