@@ -12,3 +12,6 @@ nnoremap <C-p> gt
 nnoremap <C-n> gT
 
 nmap <CR> :w<CR>
+
+" like operator replace behavior
+nnoremap Riw "_diwPa<ESC>
