@@ -112,8 +112,13 @@ NeoBundle "amdt/vim-niji.git"
 NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'tpope/vim-fugitive'
 
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'todesking/vim-textobj-methodcall.git'
+"NeoBundle 'tpope/vim-markdown.git'
+"NeoBundle 'nelstrom/vim-markdown-folding.git'
+
+
+"NeoBundle 'vim-scripts/paredit.vim.git'
+NeoBundle 'kana/vim-arpeggio.git'
 
 "" }}}
 call neobundle#end()
@@ -446,11 +451,13 @@ if neobundle#tap('qfixhowm') "{{{
     let howm_dir          = $HOME . '/Dropbox/howm'
     let QFixHowm_RootDir  = $HOME . '/Dropbox/howm'
     let QFixHowm_FileType = 'md'
-    let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+    let howm_filename     = '%Y/%m/%Y-%m-%d-%H%M%S.md'
     let howm_fileencoding = 'utf8'
     let howm_fileformat   = 'unix'
     let g:QFixHowm_TitleListCache = 0
     nmap g, [howm]
+    let qfixmemo_filetype  = 'markdown'
+    let qfixmemo_folding   = 0
 end "}}}
 
 if !exists('loaded_matchit')
@@ -924,6 +931,10 @@ inoremap () ()<LEFT>
 
 
 " Default
-let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^defapi', '^swaggered', '^context', '^GET', '^POST', '^PUT']
-let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
+" let g:clojure_fuzzy_indent = 1
+" let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^defapi', '^swaggered', '^context', '^GET', '^POST', '^PUT']
+" let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
+"
+
+
+Arpeggio imap fj <ESC>
