@@ -8,10 +8,15 @@ noremap <C-j> <C-d>
 nnoremap j gj
 nnoremap k gk
 
+nnoremap dj 1dj
+cnoremap <C-p> <UP>
+cnoremap <C-n> <Down>
+
 nnoremap <C-p> gt
 nnoremap <C-n> gT
+nnoremap <C-h> :noh<CR>
 
 nmap <CR> :w<CR>
 
 " like operator replace behavior
-nnoremap Riw "_diwPa<ESC>
+nnoremap Riw qc"_diwPa<ESC>q
